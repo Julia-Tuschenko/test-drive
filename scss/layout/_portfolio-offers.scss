@@ -1,0 +1,66 @@
+.offers{
+    
+    &__list{
+        display: flex;
+        margin-bottom: 40px;
+        
+    }
+
+    & :not(:last-child){
+        margin-right: 8px;
+    }
+}
+
+@media screen and (max-width:767px){
+    .offers__item:nth-child(-n+3){
+        margin-bottom: 15px;
+    }
+
+    .offers__list{
+        flex-wrap: wrap;
+    }
+}
+    
+
+@media screen and (min-width:768px){    
+    .offers__list{
+        margin-bottom: 30px;
+        justify-content: center;
+    }    
+}
+
+
+@media screen and (min-width:1200px){
+    .offers__list{
+    margin-bottom: 50px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+// .offers{
+//     padding-top: 94px;
+//     margin-bottom: 50px;
+
+//     &__list{
+//         display: flex;
+//         justify-content: center;
+//     }
+
+//     & :not(:last-child){
+//         margin-right: 8px;
+//     }
+      
+    
+// }
+
+
+
+

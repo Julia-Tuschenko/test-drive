@@ -1,0 +1,10 @@
+@mixin fond ($fw:700, $fs:14px, $lh:1.14){
+    font-weight: $fw;
+    font-size: $fs;
+    line-height: $lh;
+}
+
+@mixin padding ($pt:94px, $pb:94px){
+    padding-top: $pt;
+    padding-bottom: $pb;
+}

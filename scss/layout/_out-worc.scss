@@ -1,0 +1,54 @@
+.our-work{
+    @include padding ();
+
+    &__title{
+        margin-bottom: 50px;
+        @include fond (700, 36px, 1.16);
+        text-align: center;
+        letter-spacing: 0.03em;
+    
+        color: var(--title-text-colot);
+    }
+    
+    &__list{
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: -30px;
+        margin-left: -30px;
+    }
+    
+    &__example{
+        margin-top: 30px;
+        margin-left: 30px;
+    }
+    
+    &__card{
+        position: relative;
+    }
+    
+    &__p{
+        position: absolute;
+        padding-top: 27px;
+        padding-bottom: 27px;
+        width: 100%;
+        bottom: 0;
+        right: 0;
+    
+        font-family: var(--main-font);
+        @include fond ();
+        text-align: center;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+    
+        color: var(--primary-bg-color);
+        background-color: rgba(47, 48, 58, 0.8);
+    }
+}    
+
+@media screen and  (max-width: 1199px) {
+    .our-work{
+        display: none;
+    }
+}
+
+

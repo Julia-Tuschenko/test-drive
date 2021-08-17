@@ -1,0 +1,133 @@
+
+.join{ 
+    // width: 206px;
+    margin-bottom: 60px;
+
+    &__title{
+        margin-bottom: 20px;
+        @include fond ();
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+    
+        color: var(--primary-bg-color);
+    }
+
+    &__list{
+        display: flex;
+        justify-content: center;
+    }
+
+    &__item:not(:last-child){
+        margin-right: 10px;
+    }
+       
+    
+
+    &__icon{
+        width: 20px;
+        height: 20px;
+    }
+
+    &__link{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);;
+        fill: var(--primary-bg-color);
+    
+        transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    
+        &:focus,
+        &:hover{
+         background-color:var(--accent-color);
+        } 
+    }
+}
+
+
+
+@media screen and (min-width: 768px) {
+    .join{
+        margin-top: 0;
+    }
+}
+
+// @media screen and (max-width: 1199px){
+//     .join{
+//         margin-right: auto;
+//         margin-left: auto;
+//     }
+// }
+
+@media screen and (min-width: 1200px){
+    .join{
+        margin-bottom:0 ;
+        margin-right: 93px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .join{ 
+//     width: 206px;
+//     margin-right: 93px;
+    
+
+//     &__title{
+//         margin-bottom: 20px;
+//         @include fond ();
+//         letter-spacing: 0.03em;
+//         text-transform: uppercase;
+    
+//         color: var(--primary-bg-color);
+//     }
+    
+//     &__list{
+//         display: flex;
+//         justify-content: space-between;
+    
+//         &:not(:last-child){
+//             margin-right: 10px;
+//         }
+//     }
+
+//     &__icon{
+//         width: 20px;
+//         height: 20px;
+//     }
+    
+//     &__link{
+//         display: flex;
+//         align-items: center;
+//         justify-content: center;
+//         width: 44px;
+//         height: 44px;
+//         border-radius: 50%;
+//         background-color: rgba(255, 255, 255, 0.1);;
+//         fill: var(--primary-bg-color);
+    
+//         transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    
+//         &:focus,
+//         &:hover{
+//          background-color:var(--accent-color);
+//         } 
+//     }
+    
+// }
+
+
+

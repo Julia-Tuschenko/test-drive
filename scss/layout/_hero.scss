@@ -1,0 +1,167 @@
+
+
+.hero{
+    max-width: 480px;
+    // height: 400px;
+    @include padding (118px, 60px);
+    background-position: center;
+    background-size: cover;
+    background-color: #2F303A;
+    background-image: linear-gradient(rgba(47, 48, 58, 0.4),
+    rgba(47, 48, 58, 0.4))
+    ,url("../../images/hero/hero-mobile@1x.jpg");
+
+    text-align: center;
+
+    @media screen and (min-device-pixel-ratio: 2) and (min-width: 320px),
+    screen and (min-resolution: 192dpi) and (min-width:320px),
+    screen and (min-resolution: 2dppx) and (min-width:320px) {
+        .hero{
+            background-image: linear-gradient(rgba(47, 48, 58, 0.4),
+            rgba(47, 48, 58, 0.4))
+            ,url("../../images/hero/hero-mobile@2x.jpg");
+        }
+    }
+
+        &__text{
+        margin-right: auto;
+        margin-left: auto;
+    
+        text-align: center;
+        text-transform: uppercase;
+        @include fond (900, 26px, 1.61);
+        letter-spacing: 0.06em;
+        width: 360px;
+    
+        color: var(--primary-bg-color);
+    }
+
+         &__button{
+        padding: 10px 32px;
+        margin-top: 30px;
+        
+        font-family: var(--main-font);
+        @include fond (700, 16px, 1.88);
+        align-items: center;
+        letter-spacing: 0.06em;
+        cursor:pointer;
+    
+        color: var(--primary-bg-color);
+    
+        background-color: var(--accent-color);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+        border-radius: 4px;
+    }
+}
+
+@media screen and (min-width: 480px){
+    .hero{
+        max-width: 768px;
+        // height: 400px;
+        margin: 0 auto;
+        @include padding (118px, 118px);
+        background-image: linear-gradient(rgba(47, 48, 58, 0.4),
+        rgba(47, 48, 58, 0.4))
+        ,url("./../images/hero/hero-tab@1x.jpg");
+
+        @media screen and (min-device-pixel-ratio: 2) and (min-width: 480px),
+        screen and (min-resolution: 192dpi) and (min-width:480px),
+        screen and (min-resolution: 2dppx) and (min-width:480px){
+            .hero{
+                background-image: linear-gradient(rgba(47, 48, 58, 0.4),
+                rgba(47, 48, 58, 0.4))
+                ,url("./../images/hero/hero-tab@2x.jpg");
+            }
+        }
+    }
+
+}
+
+
+@media screen and (min-width: 768px){
+    .hero{
+        max-width: 1600px;
+        // height: 600px;
+        margin: 0 auto;
+        @include padding (200px, 200px);
+        background-image: linear-gradient(rgba(47, 48, 58, 0.4),
+        rgba(47, 48, 58, 0.4))
+        ,url("./../images/hero/hero@1x.jpg");
+
+    }
+}
+
+@media screen and (min-device-pixel-ratio: 2) and (min-width: 768px),
+screen and (min-resolution: 192dpi) and (min-width:768px),
+screen and (min-resolution: 2dppx) and (min-width:768px){
+    .hero{
+        background-image: linear-gradient(rgba(47, 48, 58, 0.4),
+        rgba(47, 48, 58, 0.4))
+        ,url("./../images/hero/hero@2x.jpg");
+    }
+}
+
+
+@media screen and (min-width: 480px){
+    .hero__text{
+        @include fond (900, 26px, 1.61);
+        letter-spacing: 0.06em;
+        width: 360px;
+    
+    }  
+}
+
+@media screen and (min-width: 768px){
+    .hero__text{
+        @include fond (900, 44px, 1.5);
+        letter-spacing: 0.06em;
+        width: 696px;
+    
+    }  
+}
+
+
+
+// @media screen and (min-width: 768px)and (max-width: 1199px) {
+//     .hero{
+//         margin-bottom: 627px;
+//     }
+// }
+
+
+
+// .hero{
+//     background-position: center;
+//     background-size: cover;
+//     max-width: 1600px;
+//     height: 600px;
+//     margin: 0 auto;
+//     @include padding (200px, 200px);
+
+//     background-color: #2F303A;
+//     background-image: linear-gradient(rgba(47, 48, 58, 0.4),
+//     rgba(47, 48, 58, 0.4))
+//     ,url("../images/hero/hero.jpg");
+
+//     text-align: center;
+
+
+    
+    //  &__button{
+    //     padding: 10px 32px;
+    //     margin-top: 30px;
+        
+    //     font-family: var(--main-font);
+    //     @include fond (700, 16px, 1.88);
+    //     align-items: center;
+    //     letter-spacing: 0.06em;
+    //     cursor:pointer;
+    
+    //     color: var(--primary-bg-color);
+    
+    //     background-color: var(--accent-color);
+    //     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    //     border-radius: 4px;
+    // }
+
+// }
