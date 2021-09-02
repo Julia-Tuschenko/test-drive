@@ -214,17 +214,129 @@
 // console.log(getDiscount(20000));
 // console.log(getDiscount(50000));
 
-function checkStorage(available, ordered) {
+// function checkStorage(available, ordered) {
 
-  // Change code below this line
-  const message = ordered > available ? "Not enough goods in stock!" : "The order is accepted, our manager will contact you";
+//   // Change code below this line
+//   const message = ordered > available ? "Not enough goods in stock!" : "The order is accepted, our manager will contact you";
 
-  // Change code above this line
-  return message;
-}
-console.log(checkStorage(100, 50));
-console.log(checkStorage(100, 130));
-console.log(checkStorage(200, 20));
-console.log(checkStorage(200, 150));
-console.log(checkStorage(150, 180));
+//   // Change code above this line
+//   return message;
+// }
+// console.log(checkStorage(100, 50));
+// console.log(checkStorage(100, 130));
+// console.log(checkStorage(200, 20));
+// console.log(checkStorage(200, 150));
+// console.log(checkStorage(150, 180));
+//_____________________________________________________________________________
+// Задание 5
+// Функция getShippingCost(country) должна проверять возможность доставки товара в страну 
+// пользователя (параметр country) и возвращать сообщение о результате хранящееся в переменной message. Обязательно используй инструкцию switch.
+
+// Формат возвращаемой строки "Shipping to <country> will cost <price> credits", где вместо <country> и <price> 
+// необходимо подставить соотвествующие значения.
+
+// Список стран и стоимость доставки:
+
+// China - 100 кредитов
+// Chile - 250 кредитов
+// Australia - 170 кредитов
+// Jamaica - 120 кредитов
+// Из списка видно, что доставка есть не везде. Если указанной страны нет в списке, то 
+// функция должна вернуть строку "Sorry, there is no delivery to your country"
+
+// function getShippingCost(country) {
+//   let message;
+//   // Change code below this line
+// switch(country){
+//   case "China":
+//     message = `Shipping to ${country} will cost 100 credits`;
+//     break;
+//       case "Chile":
+//     message = `Shipping to ${country} will cost 250 credits`;
+//     break;
+//       case "Australia":
+//     message = `Shipping to ${country} will cost 170 credits`;
+//     break;
+//       case "Jamaica":
+//     message = `Shipping to ${country} will cost 120 credits`;
+//     break;
+//   default:
+//     message = "Sorry, there is no delivery to your country";
+// 	}
+//   // Change code above this line
+//   return message;
+// }
+
+// console.log((getShippingCost("Australia")));
+// console.log((getShippingCost("Germany")));
+// console.log((getShippingCost("China")));
+// console.log((getShippingCost("Chile")));
+// console.log((getShippingCost("Jamaica")));
+// console.log((getShippingCost("Sweden")));
+
+//_____________________________________________________________________________________
+
+// Функция getNameLength(name) принимает имя (параметр name) и возвращает строку, в которой указана его длина. 
+// Дополни шаблонную строку в переменной message длиной строки из параметра name.
+
+// function getNameLength(name) {
+//   const message = `Name ${name} is ${name.length} characters long`; // Change this line
+
+//   return message;
+// }
+
+// getNameLength("Poly");
+// getNameLength("Harambe");
+// getNameLength("Billy");
+// getNameLength("Joe");
+
+//_________________________________________________________________________________________
+
+
+// function makeMessage (name, price) {
+//   // Change code below this line
+//    const message = `You picked ${name}, price per item is ${price} credits`;
+//   // Change code above this line
+//   return message;
+// };
+
+//  console.log(makeMessage('Radar', 6150));
+//  console.log(makeMessage('Scanner', 3500));
+//  console.log(makeMessage('Reactor', 8000));
+//  console.log(makeMessage('Engine', 4070));
+
+//____________________________________________________________________________________
+
+// Задание 6
+// Функция getSubstring(string, length) принимает строку и возвращает подстроку от начала и до length символов. 
+// Она объявляет два параметра, значения которых будут задаваться во время её вызова:
+
+// string - оригинальная строка
+// length - количество символов с начала строки для подстроки
+// Присвой переменной substring выражение создания подстроки длинной length символов (от начала) из строки string.
+
+// function getSubstring(string, length) {
+//   const substring = string.slice(0,length) // Change this line
+
+//   return substring;
+// }
+// console.log(getSubstring("Hello world", 3));
+// console.log(getSubstring("Hello world", 6));
+// console.log(getSubstring("Hello world", 8));
+// console.log(getSubstring("Hello world", 11));
+// console.log(getSubstring("Hello world", 0));
+
+//_________________________________________________________________________________________
+// Задание 7
+// Функция formatMessage(message, maxLength) принимает строку (параметр message) и форматирует её, 
+// если длина превышает значение в параметре maxLength.
+
+// Дополни код функции так, что если длина строки:
+
+// не превышает maxLength, функция возвращает её в исходном виде.
+// больше maxLength, то функция обрезает строку до maxLength символов и добавляет в конец троеточие "...", 
+// после чего возвращает укороченную версию.
+
+
+
 
