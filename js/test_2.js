@@ -195,14 +195,184 @@
 // Все символы slug должны быть в нижнем регистре
 // Все слова slug должна быть разделены тире
 
-function slugify(title) {
-    // Change code below this line
+// function slugify(title) {
+//     // Change code below this line
   
-    const slug = title.toLowerCase().split(" ").join("-");
-    return slug;
+//     const slug = title.toLowerCase().split(" ").join("-");
+//     return slug;
+//     // Change code above this line
+//   }
+
+//   console.log(slugify("Arrays for begginers"));
+
+//__________________________________________________________________________________________________________________________
+
+// Метод slice()
+// Метод slice(begin, end) возвращает новый массив, содержащий копию части исходного массива, не изменяя его. 
+// Копия делается от begin и до, но не включая, end - индексы элементов исходного массива.
+
+// Если begin и end не указаны, будет создана полная копия исходного массива.
+// Если не указан end, копирование будет от start и до конца исходного массива.
+// Если значение start отрицательное, а end не указан, то будут скопированы последние N элементов.
+// const planets = ["Earth", "Mars", "Venus", "Jupiter", "Saturn"];
+
+// console.log(planets.slice(0, 2)); // ['Earth', 'Mars']
+// console.log(planets.slice(0, 4)); // ['Earth', 'Mars', 'Venus', 'Jupiter']
+// console.log(planets.slice(1, 3)); // ['Mars', 'Venus']
+// console.log(planets.slice(-2)); // ['Jupiter', 'Saturn']
+// console.log(planets.slice()); // ['Earth', 'Mars', 'Venus', 'Jupiter', 'Saturn']
+
+
+// Задание 14
+// Дополни код так, чтобы переменные содержали частичные копии исходного массива fruits.
+
+// firstTwoEls - массив из первых двух элементов
+// nonExtremeEls - массив из всех элементов кроме первого и последнего
+// lastThreeEls - массив из трёх последних элементов
+
+// const fruits = ['apple', 'plum', 'pear', 'orange', 'banana'];
+
+// // Change code below this line
+// const firstTwoEls = fruits.slice(0, 2);
+// const nonExtremeEls = fruits.slice(1, -1);
+// const lastThreeEls = fruits.slice(-3);
+
+//_______________________________________________________________________________________________________________
+
+// Метод concat()
+// Метод concat используется для объединения двух или более массивов. Он не изменяет массив на котором 
+// вызывается, а возвращает новый. Порядок аргументов метода влияет на порядок элементов нового массива.
+
+// const firstArray = ["Mercury", "Venus", "Earth"];
+// const secondArray = ["Mars", "Jupiter"];
+// const thirdArray = ["Saturn", "Uranus", "Neptune"];
+// const allPlanets = firstArray.concat(secondArray, thirdArray);
+
+// console.log(firstArray); // ['Mercury', 'Venus', 'Earth'];
+// console.log(allPlanets); // ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune'];
+
+
+// Задание 15
+// Дополни код так, чтобы в переменной allClients получился массив всех элементов массивов oldClients и newClients.
+
+// const oldClients = ['Mango', 'Ajax', 'Poly', 'Kiwi'];
+// const newClients = ['Peach', 'Houston'];
+
+// const allClients = oldClients.concat(newClients);
+
+//________________________________________________________________________________________________________________
+
+// Задача: композиция массивов
+// Задание  16
+// Напиши функцию makeArray(firstArray, secondArray, maxLength) для создания нового массива со всеми элементами 
+// двух исходных firstArray и secondArray. Параметр maxLength содержит максимально допустимую длину нового массива.
+
+// Если количество элементов нового массива больше maxLength, функция должна вернуть копию массива длиной maxLength 
+// элементов. В противном случае функция должна вернуть новый массив целиком.
+
+// function makeArray(firstArray, secondArray, maxLength) {
+//     // Change code below this line
+	
+//     const array = firstArray.concat(secondArray).slice();
+  
+//   	if (array.length > maxLength){
+//       array.length = maxLength;
+//     } 
+//  	return array;
+
+//     // Change code above this line
+//   }
+
+// console.log(makeArray(["Mango", "Poly"], ["Ajax", "Chelsea"], 3)); // ['Mercury', 'Venus', 'Earth'];
+
+//_________________________________________________________________________________________________________________
+
+// Цикл for
+// Циклы используются для многократного повторения кода. Объявление цикла for состоит из трёх выражений.
+
+// for (Инициализация; Условие; Пост - выражение) {
+//   // Тело цикла
+// }
+// Инициализация - выполняется один раз перед началом цикла. Используется для создания переменной-счётчика и 
+// указания её начального значения.
+// Условие - выражение, оцениваемое перед каждой итерацией (повторением) цикла. Тело цикла выполняется только 
+// тогда, когда выражение приводится к true. Цикл завершается, если значение будет false.
+// Пост-выражение - выполняется в конце каждого повторения цикла, перед проверкой условия. Используется для обновления переменной-счётчика.
+// Тело - набор инструкций для выполнения на каждом повторении. Выполняется, если выражение условия приводится к true.
+// for (let i = 0; i <= 20; i += 5) {
+//   console.log(i);
+// }
+// В примере объявляется переменная i, инициализируется значением 0 и цикл выполняется (его тело) до тех пор, пока 
+// i <= 20, то есть условие приводится к true. После каждой итерации счётчик увеличивается на 5.
+
+// Задание 17
+// Дополни цикл for так, чтобы он логировал все целые числа в диапазоне от start до end включительно.
+
+// const start = 3;
+// const end = 7;
+
+// for (let i = start ; i <= end ; i += 1 ) { // Change this line
+//   console.log(i);
+// }
+
+//______________________________________________________________________________________________________
+
+// Задача: сумма чисел (цикл for)
+// Задание 18
+// Напиши функцию calculateTotal(number), которая принимает целое число (параметр number) и 
+// возвращает сумму всех целых чисел от единицы и до этого числа. Например, если number равно 3, то сумма это 1 + 2 + 3, 
+// то есть 6.
+
+// function calculateTotal(number) {
+//     // Change code below this line
+//    let total = 0;
+     
+//    for (let i= 1; i <= number; i +=1){
+//     total += i;
+//    }
+//    return total;
+//      // Change code above this line
+// }
+
+//_____________________________________________________________________________________________________________
+
+// Итерация по массиву
+// Цикл for можно использовать для итерации по массиву, то есть «перебрать» его поэлементно.
+
+// const planets = ["Earth", "Mars", "Venus"];
+
+// for (let i = 0; i < planets.length; i += 1) {
+//   console.log(planets[i]);
+// }
+// Для доступа к элементам используется синтаксис квадратных скобок массив[индекс], где индекс - это значение 
+// счётчика цикла от 0 и до последнего индекса массива, который на единицу меньше длины массива.
+
+// Задание 19
+// Дополни код цикла for так, чтобы он последовательно логировал все элементы массива fruits.
+
+// const fruits = ['apple', 'plum', 'pear', 'orange'];
+
+// for (let i = 0; i < fruits.length; i += 1) { // Change this line
+//   const fruit = fruits[i]; // Change this line
+//   console.log(fruit);
+// }
+
+//____________________________________________________________________________________________________________
+
+// Задача: подсчёт суммы покупки
+
+// Задание 20
+// Напиши функцию calculateTotalPrice(order), которая принимает один параметр order - массив чисел, и рассчитывает 
+// общую сумму его элементов. Общая сумма элементов должна сохраняться в переменной total, которая возвращается, 
+// как результат работы функции.
+
+function calculateTotalPrice(order) {
+    let total = 0;
+    // Change code below this line
+  for (let i = 0; i < order.length -1; i +=1){
+  total += order[i];
+    } 
     // Change code above this line
+    return total;
   }
-
-  console.log(slugify("Arrays for begginers"));
-
   
