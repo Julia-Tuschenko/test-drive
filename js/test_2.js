@@ -366,13 +366,30 @@
 // общую сумму его элементов. Общая сумма элементов должна сохраняться в переменной total, которая возвращается, 
 // как результат работы функции.
 
-function calculateTotalPrice(order) {
-    let total = 0;
-    // Change code below this line
-  for (let i = 0; i < order.length -1; i +=1){
-  total += order[i];
-    } 
-    // Change code above this line
-    return total;
-  }
+// function calculateTotalPrice(order) {
+//   let total = 0;
+//   // Change code below this line
+//   for (let i = 0; i < order.length; i+=1){
+//     total += order[i];
+//        }
+//   // Change code above this line
+//   return total;
+// }
+
+//______________________________________________________________________________________________________________
+
+// Задача: поиск самого длинного слова
+// Задание 21
+// Напиши функцию findLongestWord(string) которая принимает произвольную строку состоящую только из слов 
+// разделённых пробелом (параметр string) и возвращает самое длинное слово в этой строке.
+
+// function findLongestWord(string) {
+//   // Change code below this line
+// console.log(string);
+// let maxWord = string[0];
+// console.log('maxWord:', maxWord);
+
+
+//   // Change code above this line
+// }
   
