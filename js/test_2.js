@@ -384,12 +384,350 @@
 // разделённых пробелом (параметр string) и возвращает самое длинное слово в этой строке.
 
 // function findLongestWord(string) {
-//   // Change code below this line
-// console.log(string);
-// let maxWord = string[0];
-// console.log('maxWord:', maxWord);
+//     // Change code below this line
+//    const word = string.split(" ");
+//    let maxWord = word[0];
+//   for (let i = 1; i < word.length; i += 1){
+//    if (word[i].length > maxWord.length){
+//    maxWord = word[i];
+//    }
+//   }
+//    return maxWord;
+//    // Change code above this line
+//   }
+
+//   console.log(findLongestWord("Google do a roll"));
+//   console.log(findLongestWord("May the force be with you"));
 
 
-//   // Change code above this line
+//________________________________________________________________________________________________________
+
+// Метод push()
+// Метод push() позволяет добавить один или несколько элементов в конец массива, 
+// ез необходимости указывать индексы добавляемых элементов.
+
+// const planets = ["Earth", "Mars", "Venus"];
+// planets.push("Jupiter");
+// planets.push("Saturn", "Uranus", "Neptune");
+// console.log(planets); // ['Earth', 'Mars', 'Venus', 'Jupiter', 'Saturn', 'Uranus', 'Neptune']
+
+// Задание 22
+// Дополни код функции createArrayOfNumbers(min, max) так, чтобы она возвращала массив всех 
+// целых чисел от значения min до max.
+
+// function createArrayOfNumbers(min, max) {
+//     const numbers = [];
+//     // Change code below this line
+//     for (let i = min; i <= max; i += 1){
+//    numbers.push(i);
+//     }
+//     // Change code above this line
+//     return numbers;
+//   }
+
+//   console.log(createArrayOfNumbers(1, 3));
+
+//__________________________________________________________________________________________________________
+
+// Задача: фильтрация массива чисел
+// Задание 23
+// Напиши функцию filterArray(numbers, value), которая принимает массив чисел (параметр numbers) и возвращает 
+// новый массив, в котором будут только те элементы массива numbers, которые больше чем значение параметра value (число).
+
+// function filterArray(numbers, value) {
+//     // Change code below this line
+//    let array = [];
+//    for (const number of numbers){
+     
+//      if(number > value){
+//        array.push(number);
+//      }
+//    }
+ 
+//    return array;
+//    // Change code above this line
+//  }
+
+//__________________________________________________________________________________________-
+
+// Метод includes()
+// Метод includes(value) проверяет есть ли в массиве элемент со значением value и возвращает 
+// true или false соответственно. Область применения этого метода сводится к ситуациям, когда 
+// необходимо проверить есть ли элемент в массиве и не важна его позиция (индекс).
+
+// const planets = ["Earth", "Mars", "Venus"];
+
+// console.log(planets.includes("Earth")); // true
+// console.log(planets.includes("Mars")); // true
+// console.log(planets.includes("Venus")); // true
+// console.log(planets.includes("Jupiter")); // false
+
+
+// Задание 24
+// Функция checkFruit(fruit) принимает строку с названием фрукта (параметр fruit), и проверяет 
+// есть ли такой фрукт в массиве fruits.
+
+// Дополни код функции так, что если:
+
+// фрукт есть в массиве, то функция возвращает true;
+// фрукта нет в массиве, то функция возвращает false.
+
+// function checkFruit(fruit) {
+//     const fruits = ["apple", "plum", "pear", "orange"];
+    
+//     return fruits.includes(fruit); // Change this line
+//   }
+  
+//   console.log(checkFruit("plum"));
+
+//_____________________________________________________________________________________
+
+// Задача: общие элементы
+// Задание 25
+// Общими элементами массивов называют те элементы, которые присутствуют во всех массивах.
+
+// Например, в двух массивах [1, 3, 5] и [0, 8, 5, 3] общими будут числа 3 и 5, т.к. они 
+// ]присутствуют в обоих исходных массивах. А числа 0, 1 и 8 присутствуют только в одном из массивов.
+
+// Напиши функцию getCommonElements(array1, array2) которая получает два массива произвольной 
+// длины в параметры array1 и array2, и возвращает новый массив, состоящий из тех элементов, 
+// которые присутствуют в обоих исходных массивах.
+
+// function getCommonElements(array1, array2) {
+//     // Change code below this line
+//   const ar1 = array1;
+//    const ar2 =  array2;
+//     const array3 = [];
+    
+//     for(const ara of ar1){
+//       if(ar2.includes(ara)){
+//         array3.push(ara);
+//       }
+//     }
+//     return array3
+  
+  
+//    // Change code above this line
+//   }
+
+//   console.log(getCommonElements([1, 2, 3], [2, 4])getCommonElements([1, 2, 3], [2, 4]);
+
+//__________________________________________________________________________________________-
+
+// Цикл for...of
+// Инструкция for...of объявляет цикл, перебирающий итерируемые объекты, такие как массивы и строки. 
+// Тело цикла будет выполняться для значения каждого элемента. Это хорошая замена циклу for, 
+// если не нужен доступ к счётчику итерации.
+
+// for (const variable of iterable) {
+//   // тело цикла
 // }
+// variable — переменная, которая будет хранить значение элемента на каждой итерации
+// iterable — коллекция, которая имеет перечислимые элементы, например массив
+// const planets = ["Earth", "Mars", "Venus"];
+
+// for (const planet of planets) {
+//   console.log(planet);
+// }
+
+// Задание 26
+// Выполни рефакторинг кода функции calculateTotalPrice(order) заменив цикл for на for...of.
+
+// function calculateTotalPrice(order) {
+//     let total = 0;
+//     // Change code below this line
+  
+//     for (const ord of order) {
+//       total += ord;
+//     }
+  
+//     // Change code above this line
+//     return total;
+//   }
+
+//______________________________________________________________________________
+
+// Зачада: фильтрация массива чисел 2.0
+// Задание 27
+// Выполни рефакторинг функции filterArray(numbers, value) заменив цикл for на for...of.
+
+// function filterArray(numbers, value) {
+//     // Change code below this line
+//     const filteredNumbers = [];
+  
+//     for (const number of numbers) {
+  
+//       if (number > value) {
+//         filteredNumbers.push(number);
+//       }
+//     }
+  
+//     return filteredNumbers;
+//     // Change code above this line
+//   }
+//________________________________________________________________________________
+
+  
+// Оператор %
+// Вместо того, чтобы возвращать результат деления, операция по модулю (%) возвращает 
+// целочисленный остаток от деления двух чисел - делимого и делителя.
+
+// 5 % 1 = 0;
+// // 5, разделенное на 1, равно 5, а остаток - 0
+
+// 5 % 2 = 1;
+// //  5, разделенное на 2, равно 2, а остаток - 1
+
+// 5 % 3 = 2;
+// //  5, разделенное на 3, равно 1, а остаток - 2
+
+// 5 % 4 = 1;
+// //  5, разделенное на 4, равно 1, а остаток - 1
+
+// 5 % 5 = 0;
+// //  5, разделенное на 5, равно 1, а остаток - 0
+// Задание 28
+// Дополни выражения остатка от деления так, чтобы код проходил тесты.
+
+// Тесты
+// Объявлена переменная a
+// Значение переменной a это число 0
+// Объявлена переменная b
+// Значение переменной b это число 1
+// Объявлена переменная c
+// Значение переменной c это число 3
+// Объявлена переменная d
+// Значение переменной d это число 5
+// Объявлена переменная e
+// Значение переменной e это число 2
+
+// Ответы
+// const a = 3 % 1;
+// const b = 4 % 3;
+// const c = 11 % 8;
+// const d = 12 % 7;
+// const e = 8 % 6;
+//_________________________________________________________________________________________-
+
+// Задача: чётные числа
+// Задание 29
+// Напиши функцию getEvenNumbers(start, end) которая возвращает массив всех чётных чисел 
+// от start до end. Чётным считается число которое делится на 2 без остатка (10 % 2 === 0).
+
+// function getEvenNumbers(start, end) {
+//    // Change code below this line
+// const number = [];
+//   for( i = start; i <= end; i +=1){
+//     if ( i % 2 === 0){
+//       number.push(i);}
+//   }
+//   return number;
+
+//     // Change code above this line
+//   }
+//    console.log(getEvenNumbers(2, 5));
+
+//____________________________________________________________________________________-
+
+// Оператор break
+// Прервать выполнение цикла можно в любой момент. Для этого существует оператор break, 
+// который полностью прекращает выполнение цикла и передаёт управление на строку за его телом.
+
+// В примере ищем число 3. Как только выполнится условие if, цикл прекратит своё выполнение (будет прерван).
+
+// for (let i = 0; i <= 5; i += 1) {
+//   console.log(i);
+
+//   if (i === 3) {
+//     console.log("Нашли число 3, прерываем выполнение цикла");
+//     break;
+//   }
+// }
+
+// console.log("Лог после цикла");
+
+// Задание 30
+// Дополни код так, чтобы в переменную number записывалось первое число от start до end, которое 
+// делится на 5 без остатка.
+
+// const start = 6;
+// const end = 27;
+// let number;
+
+// for (let i = start; i < end; i += 1) {
+//   if (i % 5 === 0) {
+//     number = i;
+//     break;
+//   }
+// }
+
+//___________________________________________________________________________________________-
+// Оператор break vs return в функции
+// Если цикл находится в теле функции, то оператор break не прекращает выполнение функции, а 
+// только прервёт цикл. Для того чтобы прерывать выполнение сразу цикла и функции есть оператор return.
+
+// В примере ищем число 3. Как только выполнится условие if, делаем возврат, который прервёт выполнение цикла и функции.
+
+// function fn() {
+//   for (let i = 0; i <= 5; i += 1) {
+//     console.log(i);
+
+//     if (i === 3) {
+//       console.log("Нашли число 3, делаем возврат, прерывая цикл и функцию");
+//       return i;
+//     }
+//   }
+
+//   // Этот console.log не выполнится
+//   console.log("Лог после цикла в теле функции");
+// }
+
+// const result = fn();
+// console.log("Лог после выхода из функции");
+// console.lof(`Результат выполнения функции ${result}`);
+
+// Задание 31
+// Выполни рефакторинг функции findNumber(start, end, divisor) так, чтобы она:
+
+// возвращала первое число от start до end, которое делится на divisor без остатка
+// не использовала оператор break
+// не использовала переменную number
+
+// function findNumber(start, end, divisor) {
+//     // Change code below this line
+//     let number;
+  
+//     for (let i = start; i < end; i += 1) {
+//       if (i % divisor === 0) {
+//         number = i;
+//         return i;
+//       }
+//     }
+  
+//     return number;
+//     // Change code above this line
+//   }
+  //___________________________________________________________________________________________-
+
+//   Задача: функция includes()
+
+// Задание 32
+// Напиши функцию includes(array, value), которая делает тоже самое, что и метод массива 
+// массив.includes(значение) - проверяет, есть ли в массиве array значение value, возвращая true если 
+// есть и false в противном случае.
+
+// При выполнении этой задачи в теле функции includes() нельзя использовать метод массив.includes(значение).
+
+// function includes(array, value) {
+//     // Change code below this line
+   
+//     for ( i = 0; i < array.length; i+=1){
+//       if(array[i] === value){
+//         return true;}
+//     }
+      
+//     return false;
+    
+//     // Change code above this line
+//   }
   
