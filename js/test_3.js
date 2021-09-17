@@ -1401,17 +1401,284 @@
 
 // Например, findMatches([1, 2, 3, 4, 5], 1, 8, 2, 7) должна вернуть массив [1, 2], потому что только они есть 
 // в массиве первого аргумента.
-//______________________________________________________________________________________________________________
+// Change code below this line
+// Change code below this line
+// Change code below this line
+// function findMatches(array, ...args) {
+//     const matches = []; // Don't change this line
+//     for (let arg of args){
+//     for (let number of array){
+//     if(arg === number){
+//     matches.push(arg);
+//     }
+//     }
+//     }
+  
+//     // Change code above this line
+//     return matches;
+//   }
+// console.log(findMatches([1, 2, 3, 4, 5], 1, 8, 2, 7));
 
 //______________________________________________________________________________________________________________
+// Методы объекта
+// До сих пор мы рассматривали объекты только как хранилища взаимосвязанных данных, например информация о книге
+// и т. п. Объекты-хранилища обычно находятся в массиве таких же объектов, который представляет коллекцию однотипных элементов.
+
+// Объекты могут хранить не только данные, но и функции для работы с этими данными - методы. Если значение 
+// свойства это функция, такое свойство называется методом объекта.
+
+// // ✅ Логиески и синтаксически сгруппированные сущности
+// const bookShelf = {
+//   books: ["Последнее королевство", "Страж снов"],
+//   // Это метод объекта
+//   getBooks() {
+//     console.log("Этот метод будет возвращать все книги - свойство books");
+//   },
+//   // Это метод объекта
+//   addBook(bookName) {
+//     console.log("Этот метод будет добавлять новую книгу в свойство books");
+//   },
+// };
+
+// // Вызовы методов
+// bookShelf.getBooks();
+// bookShelf.addBook("Новая книга");
+// Такие объекты можно назвать «моделями». Они связывают данные и методы для работы с этими данными. Например, 
+// можно было объявить переменную books и две функции getBooks() и addBook(bookName), но тогда это были бы три 
+// независимые сущности без явной синтаксической, и со слабой логической связями.
+
+// // ❌ Слабосвязанные, независмые сущности
+// const books = [];
+// function getBooks() {}
+// function addBook() {}
+
+// Задание  34
+// Добавь объекту bookShelf ещё два метода, которые пока что будут возвращать просто строки по аналогии с 
+// getBooks() и addBook(bookName).
+
+// Метод removeBook(bookName) будет удалять книгу по имени. Возвращает строку "Deleting book <имя книги>", 
+// где <имя книги> это значение параметра bookName.
+
+// Метод updateBook(oldName, newName) будет обновлять название книги на новое. Возвращает 
+// строку "Updating book <старое имя> to <новое имя>", где <старое имя> и <новое имя>это 
+// значения параметров oldName и newName соотвественно.
+
+// const bookShelf = {
+//     // Change code below this line
+//     books: ["The last kingdom", "The guardian of dreams"],
+//     getBooks() {
+//       return "Returning all books";
+//     },
+//     addBook(bookName) {
+//       return `Adding book ${bookName}`;
+//     },
+   
+//     removeBook(bookName){
+//       return`Deleting book ${bookName}`;
+//     },
+//      updateBook(oldName, newName){
+//        return`Updating book ${oldName} to ${newName}`;
+//     },
+//     // Change code above this line
+//   };
+  
+//______________________________________________________________________________________________________________
+// Доступ к свойствам объекта в его методах
+// Методы используются для работы со свойствами объекта, их изменения. Для доступа к объекту в методе используется 
+// не имя переменной, например bookShelf, а ключевое слово this - контекст. Значением this будет объект перед «точкой», 
+// то есть объект который вызвал этот метод, в нашем случае это ссылка на объект bookShelf.
+
+// const bookShelf = {
+//   books: ["Последнее королевство"],
+//   getBooks() {
+//     console.log(this);
+//   },
+// };
+
+// // Перед точкой стоит объект bookShelf,
+// // поэтому при вызове метода, this будет хранить ссылку на него.
+// bookShelf.getBooks(); // {books: ["Последнее королевство"], getBooks: f}
+// Для того, чтобы получить доступ к свойствам объекта в методах, мы обращаемся к нему через this и дальше как 
+// обычно - «через точку» к свойствам.
+
+// const bookShelf = {
+//   books: ["Последнее королевство"],
+//   getBooks() {
+//     return this.books;
+//   },
+//   addBook(bookName) {
+//     this.books.push(bookName);
+//   },
+//   removeBook(bookName) {
+//     const bookIndex = this.books.indexOf(bookName);
+//     this.books.splice(bookIndex, 1);
+//   },
+// };
+
+// console.log(bookShelf.getBooks()); // []
+// bookShelf.addBook("Мгла");
+// bookShelf.addBook("Страж снов");
+// console.log(bookShelf.getBooks()); // ["Последнее королевство", "Мгла", "Страж снов"]
+// bookShelf.removeBook("Мгла");
+// console.log(bookShelf.getBooks()); // ["Последнее королевство", "Страж снов"]
+// Будет логично задуматься - почему бы не использовать при обращении к свойствам имя объекта, ведь мы явно не 
+// собираемся его менять. Дело в том, что имя объекта штука не надежная, методы одного объекта можно копировать в 
+// другой (с другим именем), а в будущем узнаем, что часто, при создании объекта мы заранее вовсе не знаем имени. 
+// Использование this гарантирует, что метод работает именно с тем объектом, который его вызвал.
+
+// Задание 35
+// Дополни метод updateBook(oldName, newName) так, чтобы он изменял название книги с oldName на newName в свойстве 
+// books. Используй indexOf() для того, чтобы найти нужный элемент массива, и splice() для того чтобы заменить этот элемент
+
+// const bookShelf = {
+//     books: ["The last kingdom", "Haze", "The guardian of dreams"],
+//     updateBook(oldName, newName) {
+//       // Change code below this line
+  
+//       const bookIndex = this.books.indexOf(oldName);
+//       this.books.splice(bookIndex, 1, newName);
+//       // Change code above this line
+//     },
+//   };
 
 //______________________________________________________________________________________________________________
+// Задача. Лавка зелий «У старой жабы»
+// Задание 36
+// К нам обратилась владелица лавки зелий «У старой жабы» и заказала программу для ведения инвентаря - добавления, 
+// удаления, поиска и обновления зелий. Добавь объекту atTheOldToad свойство potions, значением которого сделай пустой массив.
+
+// const atTheOldToad = {
+//     // Change code below this line
+  
+//   potions: [],
+  
+//     // Change code above this line
+//   };
+  
+  
+//______________________________________________________________________________________________________________
+// Задача. Получаем все зелья
+// Задание 37
+// Добавь объекту atTheOldToad метод getPotions(), который просто возвращает значение свойства potions.
+
+// const atTheOldToad = {
+//     potions: ["Speed potion", "Dragon breath", "Stone skin"],
+//     // Change code below this line
+//       getPotions(){
+//       return this.potions;
+//   }
+//     // Change code above this line
+//   };
+  
+//______________________________________________________________________________________________________________
+// Задача: добавляем новое зелье
+// Задание 38
+// Дополни метод addPotion(potionName) так, чтобы он добавлял зелье potionName в конец массива зелий в свойстве potions.
+
+// const atTheOldToad = {
+//     potions: ["Speed potion", "Dragon breath", "Stone skin"],
+//     addPotion(potionName) {
+//       // Change code below this line
+  
+//       return this.potions.push(potionName);
+  
+//       // Change code above this line
+//     },
+//   };
+  
+//______________________________________________________________________________________________________________
+// Задача. Удаляем зелье
+// Задание 39
+// Дополни метод removePotion(potionName) так, чтобы он удалял зелье potionName из массива зелий в свойстве potions.
+
+// const atTheOldToad = {
+//     potions: ["Speed potion", "Dragon breath", "Stone skin"],
+//     removePotion(potionName) {
+//       // Change code below this line
+  
+//   const index = this.potions.indexOf(potionName);
+//   this.potions.splice(index, 1);
+  
+//       // Change code above this line
+//     },
+//   };
 
 //______________________________________________________________________________________________________________
+// Задача: обновляем зелье
+// Задание 40
+// Дополни метод updatePotionName(oldName, newName) так, чтобы он обновлял название зелья с oldName на newName, 
+// в массиве зелий в свойстве potions.
+
+// const atTheOldToad = {
+//     potions: ["Speed potion", "Dragon breath", "Stone skin"],
+//     updatePotionName(oldName, newName) {
+//       // Change code below this line
+  
+//    const oldIdex = this.potions.indexOf(oldName);
+//    this.potions.splice(oldIdex, 1, newName);
+      
+  
+//       // Change code above this line
+//     },
+//   }; 
 //______________________________________________________________________________________________________________
-//______________________________________________________________________________________________________________
-//______________________________________________________________________________________________________________
-//______________________________________________________________________________________________________________
-//______________________________________________________________________________________________________________
+// Задача: расширяем инвентарь
+// Задание 41
+// Заказчица хочет чтобы каждое зелье было представлено не только именем, но и ценой, а в будущем может быть 
+// и другими характеристиками. Поэтому теперь в свойстве potions будет храниться массив объектов со следующими свойствами.
+
+// {
+//   name: "Dragon breath",
+//   price: 700
+// }
+// Выполни рефакторинг методов объекта atTheOldToad так, чтобы они работали не с массивом строк, а с массивом объектов.
+
+// getPotions() - метод для получения всех зелий. Возвращает значение свойства potions.
+// addPotion(newPotion) - добавляет зелье newPotion (уже объект) в массив в свойстве potions, но только если такого 
+// зелья еще нет в инвентаре. В противном случае возвращается строка.
+// removePotion(potionName) - удаляет объект зелья с именем potionName из массива в свойстве potions.
+// updatePotionName(oldName, newName) - обновляет свойство name объекта-зелья с названием oldName на newName в массиве potions.
 
 
+const atTheOldToad = {
+    potions: [
+      { name: "Speed potion", price: 460 },
+      { name: "Dragon breath", price: 780 },
+      { name: "Stone skin", price: 520 },
+    ],
+    // Change code below this line
+    getPotions() {
+      return this.potions;
+    },
+    addPotion(newPotion) {
+        
+        for (const potion of this.potions){
+      if (potion.name === newPotion.name) {
+        return `Error! Potion ${newPotion} is already in your inventory!`;
+      }
+    }
+      this.potions.push(newPotion);
+    },
+    removePotion(potionName) {
+        for (const potion of this.potions){
+          const potionIndex = this.potions.indexOf(potion);
+          this.potions.splice(potionIndex. 1)
+        }
+
+      return `Potion ${potionName} is not in inventory!`;
+    },
+    updatePotionName(oldName, newName) {
+
+        for (const potion of this.potions){
+            if (potion.name !== oldName){
+                return `Potion ${oldName} is not in inventory!`;
+            }
+        }
+     potion.name = newName;
+      },
+    
+    
+    // Change code above this line
+  };
+
+  console.log(atTheOldToad.addPotion({ name: "Stone skin", price: 240 }));
