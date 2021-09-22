@@ -182,45 +182,332 @@
 // колбэка onSuccess, передавая ему аргументом имя заказанной пиццы.
 // После объявления объекта pizzaPalace мы добавили колбэки и вызовы методов. Пожалуйста ничего там не меняй.
 
-const pizzaPalace = {
-    pizzas: ['Ultracheese', 'Smoked', 'Four meats'],
-    order(pizzaName) {},
-  };
-  // Change code above this line
+
+// const pizzaPalace = {
+//   pizzas: ['Ultracheese', 'Smoked', 'Four meats'],
+//   order(pizzaName, onSuccess, onError) {
+//   for (let piz of this.pizzas){
+//   if(piz === pizzaName){
+//   return onSuccess(pizzaName);
+//   };
+//   }
+//   return onError (`There is no pizza with a name ${pizzaName} in the assortment.`);
+//   },
+// };
+
+// // Change code above this line
+
+// // Callback for onSuccess
+// function makePizza(pizzaName) {
+//   return `Your order is accepted. Cooking pizza ${pizzaName}.`;
+// }
+
+// // Callback for onError
+// function onOrderError(error) {
+//   return `Error! ${error}`;
+// }
+
+// console.log(pizzaPalace.order("Smoked", makePizza, onOrderError)); // возвращает "Your order is accepted. Cooking pizza Smoked."
+// console.log(pizzaPalace.order("Four meats", makePizza, onOrderError)); // возвращает "Your order is accepted. Cooking pizza Four meats."
+// console.log(pizzaPalace.order("Big Mike", makePizza, onOrderError)); // возвращает "Error! There is no pizza with a name Big Mike in the assortment."
+// console.log(pizzaPalace.order("Vienna", makePizza, onOrderError)); // возвращает "Error! There is no pizza with a name Vienna in the assortment."
+
+//__________________________________________________________________________________________________________________________________
+// Метод forEach(callback)
+// Перебирающий метод массива, который используется как замена циклов for и for...of при работе с коллекцией.
+
+// массив.forEach(function callback(element, index, array) {
+//   // Тело коллбек-функции
+// });
+// Поэлементно перебирает массив.
+// Вызывает коллбек-функцию для каждого элемента массива.
+// Ничего не возвращает.
+// Аргументы коллбек-функции это значение текущего элемента element, его индекс index и сам исходный массив array. Объявлять можно только 
+// те параметры которые нужны, чаще всего это элемент, главное не забывать про их порядок.
+
+// const numbers = [5, 10, 15, 20, 25];
+
+// // Классический for
+// for (let i = 0; i < numbers.length; i += 1) {
+//   console.log(`Индекс ${i}, значение ${numbers[i]}`);
+// }
+
+// // Перебирающий forEach
+// numbers.forEach(function (number, index) {
+//   console.log(`Индекс ${index}, значение ${number}`);
+// });
+// Единственным случаем, когда стоит использовать циклы for или for...of для перебора массива, это задачи с прерыванием выполнения цикла. 
+// Прервать выполнение метода forEach нельзя, он всегда перебирает массив до конца.
+
+// Задание 5
+// Функция calculateTotalPrice(orderedItems) принимает один параметр orderedItems - массив чисел, и рассчитывает общую сумму его элементов, 
+// которая сохраняется в переменной totalPrice и возвращается как результат работы функции.
+
+// Выполни рефакторинг функции так, чтобы вместо цикла for она использовала метод forEach.
+
+// function calculateTotalPrice(orderedItems) {
+//   let totalPrice = 0;
+//   // Change code below this line
+
+//   orderedItems.forEach(function(items) {
+//     totalPrice += items;
+//   });
+
+//   // Change code above this line
+//   return totalPrice;
+// }
+// console.log(calculateTotalPrice([12, 85, 37, 4]));
+//__________________________________________________________________________________________________________________________________
+// Задача. Фильтрация массива чисел
+// Задание 6
+// Функция filterArray(numbers, value) принимает массив чисел numbers и возвращает новый массив, в котором будут только те элементы 
+// оригинального массива, которые больше чем значение параметра value.
+
+// Выполни рефакторинг функции так, чтобы вместо цикла for она использовала метод forEach.
+
+// function filterArray(numbers, value) {
+//   const filteredNumbers = [];
+//   // Change code below this line
+
+//   numbers.forEach(function(number){
+//     if (number > value) {
+//       filteredNumbers.push(number);
+//     }
+//   })
   
-  // Callback for onSuccess
-  function makePizza(pizzaName) {
-    return `Your order is accepted. Cooking pizza ${pizzaName}.`;
-  }
+//   // Change code above this line
+//   return filteredNumbers;
+// };
+// console.log(filterArray([1, 2, 3, 4, 5], 3));
+//__________________________________________________________________________________________________________________________________
+// Задача. Общие элементы
+// Задание 7
+// Функция getCommonElements(firstArray, secondArray) принимает два массива произвольной длины в параметры firstArray и secondArray, 
+// и возвращает новый массив их общих элементов, то есть тех которые есть в обоих массивах.
+
+// Выполни рефакторинг функции так, чтобы вместо цикла for она использовала метод forEach
+
+// function getCommonElements(firstArray, secondArray) {
+//   const commonElements = [];
+//   // Change code below this line
+
+//   firstArray.forEach(function(oneArray) {
+//     if (secondArray.includes(oneArray)) {
+//       commonElements.push(oneArray);
+//     } ;  
   
-  // Callback for onError
-  function onOrderError(error) {
-    return `Error! ${error}`;
-  }
-  
-  // Method calls with callbacks
-  pizzaPalace.order('Smoked', makePizza, onOrderError);
-  pizzaPalace.order('Four meats', makePizza, onOrderError);
-  pizzaPalace.order('Big Mike', makePizza, onOrderError);
-  pizzaPalace.order('Vienna', makePizza, onOrderError);
+//   });
 
-//   Метод order объявляет три параметра
+//   return commonElements;
+//   // Change code above this line
+// }
+// console.log(getCommonElements([1, 2, 3], [2, 1, 17, 19]));
+//__________________________________________________________________________________________________________________________________
+// Стрелочные функции.
+// Стрелочные функции имеют сокращённый, более лаконичный синтаксис, что уменьшает объем кода, особенно когда функция маленькая или 
+// если она используется как коллбек.
+
+// Все стрелки создаются как функциональное выражение, и если функция не анонимна, то она должна быть присвоена переменной.
+
+// // Обычное объявление функции
+// function classicAdd(a, b, c) {
+//   return a + b + c;
+// }
+
+// // Тоже самое как стрелочная функция
+// const arrowAdd = (a, b, c) => {
+//   return a + b + c;
+// };
+// Ключевое слово function не используется, вместо этого сразу идёт объявление параметров, за которыми следует символ => и тело функции.
+
+// Если параметров несколько, то они перечисляются через запятую в круглых скобках, между знаками равно = и стрелкой =>.
+
+// const add = (a, b, c) => {
+//   return a + b + c;
+// };
+// Если параметр один, его объявление может быть без круглых скобок.
+
+// const add = a => {
+//   return a + 5;
+// };
+// Если параметров нет, то обязательно должны быть пустые круглые скобки.
+
+// const greet = () => {
+//   console.log("Привет!");
+// };
+// Задание 8
+// Выполни рефакторинг функции calculateTotalPrice() так, чтобы она была объявлена как стрелочная.
+
+// Change code below this line
+
+// const calculateTotalPrice = (quantity, pricePerItem) => {
+//   // Change code above this line
+//   return quantity * pricePerItem;
+// }
+//__________________________________________________________________________________________________________________________________
+// Неявный возврат
+// В стрелочной функции после символа => идёт её тело. Здесь может быть два варианта: с фигурными скобками и без них.
+
+// const add = (a, b, c) => {
+//   console.log(a, b, c);
+//   return a + b + c;
+// };
+// Если фигурные скобки есть, и функция должна возвращать какое-то значение, необходимо явно поставить return. Это называется явный 
+// возврат (explicit return). Такой синтаксис используется в том случае, если в теле функции нужно выполнить ещё какие-то инструкции 
+// кроме возврата значения.
+
+// const add = (a, b, c) => a + b + c;
+// Если фигурных скобок нет, то возвращается результат выражения стоящего после =>. Это называется неявный возврат (implicit return). 
+// В примере вернётся результат выражения сложения параметров a, b и c.
+
+// Синтаксис неявного возврата сильно сокращает «шум» объявления функции с телом и возвращаемым выражением, но подходит только в случае
+// когда в теле функции не нужно выполнять никаких дополнительных инструкций кроме возврата значения.
+
+// // До
+// function classicAdd(a, b, c) {
+//   return a + b + c;
+// }
+
+// // После
+// const arrowAdd = (a, b, c) => a + b + c;
+
+// Задание 9
+// Выполни рефакторинг функции calculateTotalPrice() так, чтобы она использовала неявный возврат.
+
+// // Change code below this line
+// const calculateTotalPrice = (quantity, pricePerItem) => quantity * pricePerItem
+// ;
+// // Change code above this line
+
+//__________________________________________________________________________________________________________________________________
+// Стрелочные функции как коллбеки
+// Анонимные стрелочные функции отлично подходят как коллбеки для перебирающих методов массива из-за более краткого синтаксиса 
+// объявления, особенно если не нужно тело функции.
+
+// const numbers = [5, 10, 15, 20, 25];
+
+// // Объявление функции
+// numbers.forEach(function (number, index) {
+//   console.log(`Индекс ${index}, значение ${number}`);
+// });
+
+// // Анонимная стрелочная функция
+// numbers.forEach((number, index) => {
+//   console.log(`Индекс ${index}, значение ${number}`);
+// });
+// Стрелочную коллбек-функцию также можно объявлять отдельно и передавать на неё ссылку. Это стоит делать если одна функция 
+// используется в нескольих местах программы или если она громоздкая.
+
+// const numbers = [5, 10, 15, 20, 25];
+
+// const logMessage = (number, index) => {
+//   console.log(`Индекс ${index}, значение ${number}`);
+// };
+
+// numbers.forEach(logMessage);
+
+// Задание 10
+// Выполни рефакторинг функции calculateTotalPrice(orderedItems) заменив её объявление на стрелочную функцию. Замени коллбек-функцию 
+// передаваемую в метод forEach() на стрелочную функцию.
+
+// Change code below this line
+// const calculateTotalPrice = (orderedItems) => {
+//   let totalPrice = 0;
+
+//   orderedItems.forEach((ordered) => {
+//     totalPrice += ordered;
+//   });
+
+//   return totalPrice;
+// }
+// // Change code above this line
+
+//__________________________________________________________________________________________________________________________________
+// Задача. Фильтрация массива чисел 2.0
+// Задание 11
+// Замени объявление функции filterArray() и коллбек для метода forEach() на стрелочные функции.
+
+// Change code below this line
+// const filterArray = (numbers, value) => {
+//   const filteredNumbers = [];
+
+//   numbers.forEach((number) => {
+//     if (number > value) {
+//       filteredNumbers.push(number);
+//     }
+//   });
+
+//   // Change code above this line
+//   return filteredNumbers;
+// }
+
+//__________________________________________________________________________________________________________________________________
+// Задача. Общие элементы 2.0
+// Задание 12
+// Замени объявление функции getCommonElements() и коллбек для метода forEach() на стрелочные функции.
+
+// Change code below this line
+// const getCommonElements = (firstArray, secondArray) => {
+//   const commonElements = [];
+
+//   firstArray.forEach((element) => {
+//     if (secondArray.includes(element)) {
+//       commonElements.push(element);
+//     }
+//   });
+
+//   // Change code above this line
+//   return commonElements;
+// }
+
+//__________________________________________________________________________________________________________________________________
+// Чистые функции
+// Функция с побочными эффектами - это функция которая в процессе выполнения может изменять или использовать глобальные переменные, 
+// изменять значение аргументов ссылочного типа, выполнять операции ввода-вывода и т. п.
+
+// const dirtyMultiply = (array, value) => {
+//   for (let i = 0; i < array.length; i += 1) {
+//     array[i] = array[i] * value;
+//   }
+// };
+
+// const numbers = [1, 2, 3, 4, 5];
+// dirtyMultiply(numbers, 2);
+// // Произошла мутация исходных данных - массива numbers
+// console.log(numbers); // [2, 4, 6, 8, 10]
+// Функция dirtyMultiply(array, value) умножает каждый элемент массива array на число value. Она изменяет (мутирует) исходный массив 
+// по ссылке.
+
+// Чистая функция (pure function) - это функция результат которой зависит только от значений переданных аргументов. При одинаковых 
+// аргументах она всегда возвращает один и тот же результат и не имеет побочных эффектов, то есть не изменяет значения аргументов.
+
+// Напишем реализацию чистой функции умножения элементов массива, возвращающей новый массив, не изменяя исходный.
+
+// const pureMultiply = (array, value) => {
+//   const newArray = [];
+
+//   array.forEach(element => {
+//     newArray.push(element * value);
+//   });
+
+//   return newArray;
+// };
+
+// const numbers = [1, 2, 3, 4, 5];
+// const doubledNumbers = pureMultiply(numbers, 2);
+
+// // Не произошло мутации исходных данных
+// console.log(numbers); // [1, 2, 3, 4, 5]
+// // Функция вернула новый массив с изменёнными данными
+// console.log(doubledNumbers); // [2, 4, 6, 8, 10]
 
 
-console.log(pizzaPalace.order("Smoked", makePizza, onOrderError)); // возвращает "Your order is accepted. Cooking pizza Smoked."
-console.log(pizzaPalace.order("Four meats", makePizza, onOrderError)); // возвращает "Your order is accepted. Cooking pizza Four meats."
-console.log(pizzaPalace.order("Big Mike", makePizza, onOrderError)); // возвращает "Error! There is no pizza with a name Big Mike in the assortment."
-console.log(pizzaPalace.order("Vienna", makePizza, onOrderError)); // возвращает "Error! There is no pizza with a name Vienna in the assortment."
+// Задание 13
+// Функция changeEven(numbers, value) принимает массив чисел numbers и обновляет каждый элемент, значение которого это чётное число, 
+// добавляя к нему значение параметра value.
 
-//__________________________________________________________________________________________________________________________________
-//__________________________________________________________________________________________________________________________________
-//__________________________________________________________________________________________________________________________________
-//__________________________________________________________________________________________________________________________________
-//__________________________________________________________________________________________________________________________________
-//__________________________________________________________________________________________________________________________________
-//__________________________________________________________________________________________________________________________________
-//__________________________________________________________________________________________________________________________________
-//__________________________________________________________________________________________________________________________________
+// Выполни рефакторинг функции так, чтобы она стала чистой - не изменяла массив чисел numbers, а создавала, наполняла и возвращала 
+// новый массив с обновлёнными значениями.
 //__________________________________________________________________________________________________________________________________
 //__________________________________________________________________________________________________________________________________
 //__________________________________________________________________________________________________________________________________
