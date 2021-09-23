@@ -520,21 +520,537 @@
 //     return newArray;});
 //     // Change code above this line
 //   }
-function changeEven(numbers, value) {
-    // Change code below this line
-  const newArray = [];
-    numbers.forEach(number => {
-        if (number % 2 === 0){
-    newArray.push(number + value);}
-    else {newArray.push(number);}
-    });
-    return newArray;
-    // Change code above this line
-  }
+// function changeEven(numbers, value) {
+//     // Change code below this line
+//   const newArray = [];
+//     numbers.forEach(number => {
+//         if (number % 2 === 0){
+//     newArray.push(number + value);}
+//     else {newArray.push(number);}
+//     });
+//     return newArray;
+//     // Change code above this line
+//   }
   
 
-    console.log(changeEven([1, 2, 3, 4, 5], 10));
+//     console.log(changeEven([1, 2, 3, 4, 5], 10));
+// //__________________________________________________________________________________________________________________________________
+// Метод map()
+// Большинство перебирающих методов массива это чистые функции. Они создают новый массив, заполняют его, применяя к значению каждого 
+// элемента указанную коллбек-функцию, после чего возвращают этот новый массив.
+
+// Метод map(callback) используется для трансформации массива. Он вызывает коллбек-функцию для каждого элемента исходного массива, 
+// а результат её работы записывает в новый массив, который и будет результатом выполнения метода.
+
+// массив.map((element, index, array) => {
+//   // Тело коллбек-функции
+// });
+// Поэлементно перебирает оригинальный массив.
+// Не изменяет оригинальный массив.
+// Результат работа коллбек-функции записывается в новый массив.
+// Возвращает новый массив такой же длины.
+// Его можно использовать для того, чтобы изменить каждый элемент массива. Оригинальный массив используется как эталон, на базе которого
+//  можно сделать другую коллекцию.
+
+// const planets = ["Earth", "Mars", "Venus", "Jupiter"];
+
+// const planetsInUpperCase = planets.map(planet => planet.toUpperCase());
+// console.log(planetsInUpperCase); // ["EARTH", "MARS", "VENUS", "JUPITER"]
+
+// const planetsInLowerCase = planets.map(planet => planet.toLowerCase());
+// console.log(planetsInLowerCase); // ["earth", "mars", "venus", "jupiter"]
+
+// // Оригинальный массив не изменился
+// console.log(planets); // ["Earth", "Mars", "Venus", "Jupiter"]
+// Использование анонимных стрелочных функций с неявным возвратом сильно сокращает «шум» объявления коллбек-функции, делая код 
+// чище и проще для восприятия.
+
+// Задание 14
+// Дополни код так, чтобы в переменной planetsLengths получился массив длин названий планет. Обязательно используй метод map().
+
+// const planets = ["Earth", "Mars", "Venus", "Jupiter"];
+// // Change code below this line
+// const planetsLengths = planets.map(planet => planet.length);
 //__________________________________________________________________________________________________________________________________
+// Метод map() и массив объектов
+// Мы уже знаем что повседневная задача это манипуляция массивом объектов. Например, получить массив значений свойства из всех 
+// объектов. Есть массив студентов, а нужно получить отдельный массив их имён.
+
+// const students = [
+//   { name: "Mango", score: 83 },
+//   { name: "Poly", score: 59 },
+//   { name: "Ajax", score: 37 },
+//   { name: "Kiwi", score: 94 },
+//   { name: "Houston", score: 64 },
+// ];
+
+// const names = students.map(student => student.name);
+// console.log(names); // ["Mango", "Poly", "Ajax", "Kiwi", "Houston"]
+// Используя метод map() можно перебрать массив объектов, и в коллбек-функции вернуть значение свойства каждого из них.
+
+// Задание 15
+// Используя метод map() сделай так, чтобы в переменной titles получился массив названий книг (свойство title) из всех объектов
+//  массива books.
+
+// const books = [
+//   {
+//     title: "The Last Kingdom",
+//     author: "Bernard Cornwell",
+//     rating: 8.38,
+//   },
+//   {
+//     title: "Beside Still Waters",
+//     author: "Robert Sheckley",
+//     rating: 8.51,
+//   },
+//   {
+//     title: "The Dream of a Ridiculous Man",
+//     author: "Fyodor Dostoevsky",
+//     rating: 7.75,
+//   },
+//   { title: "Redder Than Blood", author: "Tanith Lee", rating: 7.94 },
+//   { title: "Enemy of God", author: "Bernard Cornwell", rating: 8.67 },
+// ];
+// // Change code below this line
+
+// const titles = books.map(book => book.title);
+
+//__________________________________________________________________________________________________________________________________
+// Метод flatMap()
+// Метод flatMap(callback) аналогичен методу map(), но применяется в случаях, когда результат это многомерный массив который 
+// необходимо «разгладить».
+
+// массив.flatMap((element, index, array) => {
+//   // Тело коллбек-функции
+// });
+// В массиве students хранится список студентов со списком предметов, которые посещает студент, в свойстве courses. Несколько 
+// студентов могут посещать один и тот же предмет. Необходимо составить список всех предметов, которые посещает эта группа студентов, 
+// пока даже повторяющихся.
+
+// const students = [
+//   { name: "Mango", courses: ["mathematics", "physics"] },
+//   { name: "Poly", courses: ["science", "mathematics"] },
+//   { name: "Kiwi", courses: ["physics", "biology"] },
+// ];
+
+// students.map(student => student.courses);
+// // [["mathematics", "physics"], ["science", "mathematics"], ["physics", "biology"]]
+
+// students.flatMap(student => student.courses);
+// // ["mathematics", "physics", "science", "mathematics", "physics", "biology"];
+// Он вызывает коллбек-функцию для каждого элемента исходного массива, а результат её работы записывает в новый массив. Отличие от map() 
+// в том, что новый массив «разглаживается» на глубину равную единице (одна вложенность). Этот разглаженный массив и есть результат работы flatMap().
+
+// Задание 16
+// Используя метод flatMap() сделай так, чтобы в переменной genres получился массив всех жанров книг (свойство genres) из массива книг books.
+
+// const books = [
+//   {
+//     title: "The Last Kingdom",
+//     author: "Bernard Cornwell",
+//     genres: ["adventure", "history"],
+//   },
+//   {
+//     title: "Beside Still Waters",
+//     author: "Robert Sheckley",
+//     genres: ["fiction"],
+//   },
+//   {
+//     title: "Redder Than Blood",
+//     author: "Tanith Lee",
+//     genres: ["horror", "mysticism"],
+//   },
+// ];
+// // Change code below this line
+
+// const genres = books.flatMap(book => book.genres);
+
+//__________________________________________________________________________________________________________________________________
+// Задача. Имена пользователей 17
+// Этот массив объектов мы будем передавать в параметр users при вызове функции из задания.
+
+// [
+//   {
+//     name: "Moore Hensley",
+//     email: "moorehensley@indexia.com",
+//     eyeColor: "blue",
+//     friends: ["Sharron Pace"],
+//     isActive: false,
+//     balance: 2811,
+//     skills: ["ipsum", "lorem"],
+//     gender: "male",
+//     age: 37,
+//   },
+//   {
+//     name: "Sharlene Bush",
+//     email: "sharlenebush@tubesys.com",
+//     eyeColor: "blue",
+//     friends: ["Briana Decker", "Sharron Pace"],
+//     isActive: true,
+//     balance: 3821,
+//     skills: ["tempor", "mollit", "commodo", "veniam", "laborum"],
+//     gender: "female",
+//     age: 34,
+//   },
+//   {
+//     name: "Ross Vazquez",
+//     email: "rossvazquez@xinware.com",
+//     eyeColor: "green",
+//     friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+//     isActive: false,
+//     balance: 3793,
+//     skills: ["nulla", "anim", "proident", "ipsum", "elit"],
+//     gender: "male",
+//     age: 24,
+//   },
+//   {
+//     name: "Elma Head",
+//     email: "elmahead@omatom.com",
+//     eyeColor: "green",
+//     friends: ["Goldie Gentry", "Aisha Tran"],
+//     isActive: true,
+//     balance: 2278,
+//     skills: ["adipisicing", "irure", "velit"],
+//     gender: "female",
+//     age: 21,
+//   },
+//   {
+//     name: "Carey Barr",
+//     email: "careybarr@nurali.com",
+//     eyeColor: "blue",
+//     friends: ["Jordan Sampson", "Eddie Strong"],
+//     isActive: true,
+//     balance: 3951,
+//     skills: ["ex", "culpa", "nostrud"],
+//     gender: "male",
+//     age: 27,
+//   },
+//   {
+//     name: "Blackburn Dotson",
+//     email: "blackburndotson@furnigeer.com",
+//     eyeColor: "brown",
+//     friends: ["Jacklyn Lucas", "Linda Chapman"],
+//     isActive: false,
+//     balance: 1498,
+//     skills: ["non", "amet", "ipsum"],
+//     gender: "male",
+//     age: 38,
+//   },
+//   {
+//     name: "Sheree Anthony",
+//     email: "shereeanthony@kog.com",
+//     eyeColor: "brown",
+//     friends: ["Goldie Gentry", "Briana Decker"],
+//     isActive: true,
+//     balance: 2764,
+//     skills: ["lorem", "veniam", "culpa"],
+//     gender: "female",
+//     age: 39,
+//   },
+// ];
+// Задание 17
+// Дополни функцию getUserNames(users) так, чтобы она возвращала массив имён пользователей (свойство name) из 
+// массива объектов в параметре users.
+
+// const getUserNames = users => {
+//   return users.map(user => user.name);
+//   };
+//__________________________________________________________________________________________________________________________________
+// Задача. Почты пользователей 18 (из задачи 17)
+// Этот массив объектов мы будем передавать в параметр users при вызове функции из задания.
+// Задание 18
+// Дополни функцию getUserEmails(users) так, чтобы она возвращала массив почтовых адресов пользователей (свойство email) из массива 
+// объектов в параметре users.
+
+// const getUserEmails = users => {
+//   return users.map(user => user.email);
+// };
+
+//__________________________________________________________________________________________________________________________________
+// Методы filter и find
+// Метод filter(callback) используется для единственной операции - фильтрации массива, то есть когда необходимо выбрать 
+// более одного элемента из коллекции по какому-то критерию.
+
+// массив.filter((element, index, array) => {
+//   // Тело коллбек-функции
+// });
+// Не изменяет оригинальный массив.
+// Поэлементно перебирает оригинальный массив.
+// Возвращает новый массив.
+// Добавляет в возвращаемый массив элементы которые удовлетворяют условию коллбек-функции.
+// Если коллбек вернул true элемент добавляется в возвращаемый массив.
+// Если коллбек вернул false элемент не добавляется в возвращаемый массив.
+// Если ни один элемент не удовлетворил условию, возвращает пустой массив.
+// const values = [51, -3, 27, 21, -68, 42, -37];
+
+// const positiveValues = values.filter(value => value >= 0);
+// console.log(positiveValues); // [51, 27, 21, 42]
+
+// const negativeValues = values.filter(value => value < 0);
+// console.log(negativeValues); // [-3, -68, -37]
+
+// const bigValues = values.filter(value => value > 1000);
+// console.log(bigValues); // []
+
+// // Оригинальный массив не изменился
+// console.log(values); // [51, -3, 27, 21, -68, 42, -37]
+// То есть метод filter вызывает коллбек-функцию для каждого элемента исходного массива и если результат её выполнения true, 
+// текущий элемент добавляет в новый массив.
+
+// Задание 19
+// Дополни код так, чтобы в переменной evenNumbers получился массив чётных чисел из массива numbers, а в переменной 
+// oddNumbers массив нечётных. Обязательно используй метод filter().
+// const numbers = [17, 24, 82, 61, 36, 18, 47, 52, 73];
+// // Change code below this line
+
+// const evenNumbers = numbers.filter(number => number % 2 === 0);
+// const oddNumbers = numbers.filter(number => number % 2);
+//__________________________________________________________________________________________________________________________________
+// Фильтрация уникальных элементов
+// Используя метод filter() можно выполнить фильтрацию массива так, что в нём останутся только уникальные элементы. Этот приём 
+// работает только с массивом примитивных значений - не объектов.
+
+// Вернёмся к группе студентов и массиву всех посещаемых предметов, которые мы получили методом flatMap().
+
+// const students = [
+//   { name: "Mango", courses: ["mathematics", "physics"] },
+//   { name: "Poly", courses: ["science", "mathematics"] },
+//   { name: "Kiwi", courses: ["physics", "biology"] },
+// ];
+
+// const allCourses = students.flatMap(student => student.courses);
+// // ["mathematics", "physics", "science", "mathematics", "physics", "biology"];
+// В переменной allCourses хранится массив всех посещаемых предметов, которые могут повторяться. Задача заключается в том, 
+// чтобы сделать новый массив, в котором будут только уникальные предметы, то есть без повторений.
+
+// const uniqueCourses = allCourses.filter(
+//   (course, index, array) => array.indexOf(course) === index
+// );
+// Используя array.indexOf(course) выполняем поиск первого совпадения текущего элемента course и получаем его индекс в оригинальном 
+// массиве всех курсов. В параметре index хранится индекс текущего элемента course при переборе массива методом filter.
+
+// Если результат indexOf() и значение index равны - это уникальный элемент, потому что это первый раз когда такое значение встречается 
+// в массиве и на текущей итерации фильтр обрабатывает именно его.
+
+// # Массив всех курсов
+// ["mathematics", "physics", "science", "mathematics", "physics", "biology"];
+// Для элемента "mathematics" под индексом 0:
+
+// indexOf() вернёт 0, потому что ищет первое совпадение.
+// Значение параметра index будет 0.
+// Они равны, значит это уникальный элемент.
+// Для элемента "mathematics" под индексом 3:
+
+// indexOf() вернёт 0, потому что ищет первое совпадение.
+// Значение параметра index будет 3.
+// Они не равны, значит это повторяющийся - не уникальный элемент.
+
+// Задание 20
+// Дополни код так, чтобы в переменной allGenres был массив всех жанров книг (свойство genres) из массива books, а в переменной 
+// uniqueGenres массив уникальных жанров - без повторений.
+// const books = [
+//   {
+//     title: "The Last Kingdom",
+//     author: "Bernard Cornwell",
+//     genres: ["adventure", "history"],
+//   },
+//   {
+//     title: "Beside Still Waters",
+//     author: "Robert Sheckley",
+//     genres: ["fiction", "mysticism"],
+//   },
+//   {
+//     title: "Redder Than Blood",
+//     author: "Tanith Lee",
+//     genres: ["horror", "mysticism", "adventure"],
+//   },
+// ];
+// // Change code below this line
+// const allGenres = books.flatMap(book => book.genres);
+// const uniqueGenres = allGenres.filter(
+//   (element,index, array)=> array.indexOf(element) === index );
+
+//__________________________________________________________________________________________________________________________________
+// Метод filter() и массив объектов
+// При работе с массивом объектов выполняется фильтрация по значению какого-то свойства. В результате получается новый массив 
+// отфильтрованных объектов.
+
+// Например, есть массив студентов с баллами за тест. Необходимо отфильтровать лучших (балл выше 80), худших (балл ниже 50) и средних 
+// студентов (балл от 50 до 80).
+
+// const LOW_SCORE = 50;
+// const HIGH_SCORE = 80;
+// const students = [
+//   { name: "Mango", score: 83 },
+//   { name: "Poly", score: 59 },
+//   { name: "Ajax", score: 37 },
+//   { name: "Kiwi", score: 94 },
+//   { name: "Houston", score: 64 },
+// ];
+
+// const best = students.filter(student => student.score >= HIGH_SCORE);
+// console.log(best); // Массив объектов с именами Mango и Kiwi
+
+// const worst = students.filter(student => student.score < LOW_SCORE);
+// console.log(worst); // Массив с одним объектом Ajax
+
+// // В коллбек-функции удобно деструктуризировать свойства объекта
+// const average = students.filter(
+//   ({ score }) => score >= LOW_SCORE && score < HIGH_SCORE
+// );
+// console.log(average); // Массив объектов с именами Poly и Houston
+
+// Задание 21
+// Используя метод filter() дополни код так, чтобы:
+
+// В переменной topRatedBooks получился массив книг рейтинг которых (свойство rating) больше либо равно значению переменной MIN_RATING.
+// В переменной booksByAuthor получился массив книг написанных автором с именем (свойство author) которое совпадает со значением 
+// в переменной AUTHOR.
+
+// const books = [
+//   {
+//     title: "The Last Kingdom",
+//     author: "Bernard Cornwell",
+//     rating: 8.38,
+//   },
+//   {
+//     title: "Beside Still Waters",
+//     author: "Robert Sheckley",
+//     rating: 8.51,
+//   },
+//   {
+//     title: "The Dream of a Ridiculous Man",
+//     author: "Fyodor Dostoevsky",
+//     rating: 7.75,
+//   },
+//   { title: "Redder Than Blood", author: "Tanith Lee", rating: 7.94 },
+//   { title: "Enemy of God", author: "Bernard Cornwell", rating: 8.67 },
+// ];
+
+// const MIN_RATING = 8;
+// const AUTHOR = "Bernard Cornwell";
+// // Change code below this line
+
+// const topRatedBooks = books.filter(book => book.rating >= MIN_RATING);
+// const booksByAuthor = books.filter(book => book.author === AUTHOR);
+
+// console.log(topRatedBooks);
+// console.log(booksByAuthor);
+//__________________________________________________________________________________________________________________________________
+// Задача. Пользователи с цветом глаз
+// Этот массив объектов мы будем передавать в параметр users при вызове функции из задания.
+
+// [
+//   {
+//     name: "Moore Hensley",
+//     email: "moorehensley@indexia.com",
+//     eyeColor: "blue",
+//     friends: ["Sharron Pace"],
+//     isActive: false,
+//     balance: 2811,
+//     gender: "male"
+//   },
+//   {
+//     name: "Sharlene Bush",
+//     email: "sharlenebush@tubesys.com",
+//     eyeColor: "blue",
+//     friends: ["Briana Decker", "Sharron Pace"],
+//     isActive: true,
+//     balance: 3821,
+//     gender: "female"
+//   },
+//   {
+//     name: "Ross Vazquez",
+//     email: "rossvazquez@xinware.com",
+//     eyeColor: "green",
+//     friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+//     isActive: false,
+//     balance: 3793,
+//     gender: "male"
+//   },
+//   {
+//     name: "Elma Head",
+//     email: "elmahead@omatom.com",
+//     eyeColor: "green",
+//     friends: ["Goldie Gentry", "Aisha Tran"],
+//     isActive: true,
+//     balance: 2278,
+//     gender: "female"
+//   },
+//   {
+//     name: "Carey Barr",
+//     email: "careybarr@nurali.com",
+//     eyeColor: "blue",
+//     friends: ["Jordan Sampson", "Eddie Strong"],
+//     isActive: true,
+//     balance: 3951,
+//     gender: "male"
+//   },
+//   {
+//     name: "Blackburn Dotson",
+//     email: "blackburndotson@furnigeer.com",
+//     eyeColor: "brown",
+//     friends: ["Jacklyn Lucas", "Linda Chapman"],
+//     isActive: false,
+//     balance: 1498,
+//     gender: "male"
+//   },
+//   {
+//     name: "Sheree Anthony",
+//     email: "shereeanthony@kog.com",
+//     eyeColor: "brown",
+//     friends: ["Goldie Gentry", "Briana Decker"],
+//     isActive: true,
+//     balance: 2764,
+//     gender: "female"
+//   }
+// ]
+// Задание 22
+// Дополни функцию getUsersWithEyeColor(users, color) так, чтобы она возвращала массив пользователей у которых цвет глаз 
+// (свойство eyeColor) совпадает со значением параметра color.
+
+// const getUsersWithEyeColor = (users, color) => {
+//   return users.filter(user => user.eyeColor === color); 
+//   };
+//__________________________________________________________________________________________________________________________________
+// Задача. Пользователи в возрастной категории (із задачі 22)
+// Этот массив объектов мы будем передавать в параметр users при вызове функции из задания.
+
+// Задание 23
+// Дополни функцию getUsersWithAge(users, minAge, maxAge) так, чтобы она возвращала массив пользователей, возраст которых 
+// (свойство age) попадает в промежуток от minAge до maxAge.
+// const getUsersWithAge = (users, minAge, maxAge) => {
+//   return users.filter(user => user.age >= minAge && user.age <= maxAge);
+//  };
+//__________________________________________________________________________________________________________________________________
+// Задача. Пользователи с другом (із задачі 22)
+// Этот массив объектов мы будем передавать в параметр users при вызове функции из задания.
+
+// Задание 24
+// Дополни функцию getUsersWithFriend(users, friendName) так, чтобы она возвращала массив пользователей у которых есть друг с именем 
+// в параметре friendName. Массив друзей пользователя хранится в свойстве friends.
+// const getUsersWithFriend = (users, friendName) => {
+//   return users.filter(user => user.friends.includes(friendName));
+// };
+//__________________________________________________________________________________________________________________________________
+// Задача. Список друзей(із задачі 22)
+// Этот массив объектов мы будем передавать в параметр users при вызове функции из задания.
+// Задание 25
+// Дополни функцию getFriends(users) так, чтобы она возвращала массив друзей всех пользователей (свойство friends). У нескольких 
+// пользователей могут быть одинаковые друзья, сделай так чтобы возвращаемый массив не содержал повторений.
+
+// const getFriends = (users) => {
+//   const totalFriends = users.flatMap(user => user.friends);
+//  const filterFriends = totalFriends.filter((friend, index, array) => array.indexOf(friend) === index);
+//  return filterFriends;
+// };
+//__________________________________________________________________________________________________________________________________
+// Задача. Активные пользователи
+// Этот массив объектов мы будем передавать в параметр users при вызове функции из задания.
+
+// Задание 26
+// Дополни функцию getActiveUsers(users) так, чтобы она возвращала массив активных пользователей, значение свойства isActive которых true.
+
 //__________________________________________________________________________________________________________________________________
 //__________________________________________________________________________________________________________________________________
 //__________________________________________________________________________________________________________________________________
