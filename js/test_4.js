@@ -508,6 +508,32 @@
 
 // Выполни рефакторинг функции так, чтобы она стала чистой - не изменяла массив чисел numbers, а создавала, наполняла и возвращала 
 // новый массив с обновлёнными значениями.
+// function changeEven(numbers, value) {
+//     // Change code below this line
+//     const newArray = [];
+    
+//     numbers.forEach(number => {
+//       if(newArray.push(number % 2 === 0)){
+//         return newArray.push(number + value);
+//         }else{newArray.push(number)};
+
+//     return newArray;});
+//     // Change code above this line
+//   }
+function changeEven(numbers, value) {
+    // Change code below this line
+  const newArray = [];
+    numbers.forEach(number => {
+        if (number % 2 === 0){
+    newArray.push(number + value);}
+    else {newArray.push(number);}
+    });
+    return newArray;
+    // Change code above this line
+  }
+  
+
+    console.log(changeEven([1, 2, 3, 4, 5], 10));
 //__________________________________________________________________________________________________________________________________
 //__________________________________________________________________________________________________________________________________
 //__________________________________________________________________________________________________________________________________
