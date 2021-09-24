@@ -1356,8 +1356,424 @@
 // Игровому сервису необходим функционал подсчёта среднего времени проведённого в играх. Дополни код так, чтобы в переменной 
 // totalPlayTime получилось общее игровое время из массива playtimes.
 
+// const players = {
+//     mango: 1270,
+//     poly: 468,
+//     ajax: 710,
+//     kiwi: 244
+//   };
+//   const playtimes = Object.values(players); // [1270, 468, 710, 244]
+//   // Change code below this line
+  
+//   const totalPlayTime = playtimes.reduce((acc, number) => {
+//   return acc + number;
+//   }, 0);
+  
+//   // Change code above this line
+//   const averagePlayTime = totalPlayTime / playtimes.length;
 
+//__________________________________________________________________________________________________________________________________
+// Метод reduce() и массив объектов
+// При работе с массивом объектов выполняется редуцирование по значению какого-то свойства. Например, есть массив студентов с баллами 
+// за тест. Необходимо получить средний бал.
+
+// const students = [
+//   { name: "Mango", score: 83 },
+//   { name: "Poly", score: 59 },
+//   { name: "Ajax", score: 37 },
+//   { name: "Kiwi", score: 94 },
+//   { name: "Houston", score: 64 },
+// ];
+
+// // Название аккумулятора может быть произвольным, это просто параметр функции
+// const totalScore = students.reduce((total, student) => {
+//   return total + student.score;
+// }, 0);
+
+// const averageScore = totalScore / students.length;
+// Задание 36
+// Нашему сервису необходимо рассчитать среднее время проведённое в одной игре для каждого игрока, и получить общую сумму этих времён. 
+// Рассчитать время для каждого из игроков, можно разделив его время (свойство playtime) на количество игр (свойство gamesPlayed).
+
+// const players = [
+//     { name: "Mango", playtime: 1270, gamesPlayed: 4 },
+//     { name: "Poly", playtime: 469, gamesPlayed: 2 },
+//     { name: "Ajax", playtime: 690, gamesPlayed: 3 },
+//     { name: "Kiwi", playtime: 241, gamesPlayed: 1 },
+//   ];
+//   // Change code below this line
+  
+//   const totalAveragePlaytimePerGame = players.reduce((acc, play) => acc + play.playtime / play.gamesPlayed, 0,);
 
 //__________________________________________________________________________________________________________________________________
+// Задача. Общий баланс пользователей
+// Этот массив объектов мы будем передавать в параметр users при вызове функции из задания.
+
+// Задание 36
+// Дополни функцию calculateTotalBalance(users) так, чтобы она считала и возвращала сумму всех средств (свойство balance) 
+// которые хранят пользователи из массива users.
+
+// const calculateTotalBalance = users => {
+//     return users.reduce((acc, user) => acc + user.balance, 0,) 
+//   };
 //__________________________________________________________________________________________________________________________________
+// Задача. Общее количество друзей
+// Этот массив объектов мы будем передавать в параметр users при вызове функции из задания.
+
+// Задание 37
+// Дополни функцию getTotalFriendCount(users) так, чтобы она считала и возвращала общее количество друзей (свойство friends) 
+// всех пользователей из массива users.
+
+// const getTotalFriendCount = users => {
+//     return users.reduce((acc, user) => acc + user.friends.length,  0,)
+//  };
 //__________________________________________________________________________________________________________________________________
+// Метод sort()
+// Метод sort() сортирует элементы массива, но в отличии от остальных перебирающих методов, он сортирует исходный массив.
+
+// Сортирует и изменяет исходный массив.
+// Возвращает изменённый массив, то есть ссылку на отсортированный исходный.
+// По умолчанию сортирует по возрастанию.
+// Сортировка происходит путём приведения значений к строке и сравнения порядковых номеров в таблице Unicode.
+// Такой массив чисел будет отсортирован по возврастанию.
+
+// const scores = [61, 19, 74, 35, 92, 56];
+// scores.sort();
+// console.log(scores); // [19, 35, 56, 61, 74, 92]
+// Но, так как по умолчанию значения приводятся к строке, стандартная сортировка чисел работает необычно. Поэтому в следующем упражнении 
+// мы рассмотрим как задавать свой порядок сортировки.
+
+// const scores = [27, 2, 41, 4, 7, 3, 75];
+// scores.sort();
+// console.log(scores); // [2, 27, 3, 4, 41, 7, 75]
+// Массив строк сортируется по алфавиту.
+
+// const students = ["Jacob", "Artemis", "Solomon", "Adrian", "Kai", "Ganymede"];
+// students.sort();
+// console.log(students); // [ "Adrian", "Artemis", "Ganymede", "Jacob", "Kai", "Solomon" ]
+// При этом порядковый номер заглавных букв меньше чем у прописных.
+
+// const letters = ["b", "B", "a", "A", "c", "C"];
+// letters.sort();
+// console.log(letters); // ["A", "B", "C", "a", "b", "c"]
+// Из-за того, что сортируется исходный массив, нарушается принцип чистоты функций и нельзя удобно сделать несколько производных 
+// коллекций на базе исходной. Например, сделать коллекцию отсортированную по возрастанию, а другую по убыванию. Поэтому перед с
+// ортировкой делают полную копию исходного массива и сортируют уже её.
+
+// const scores = [61, 19, 74, 35, 92, 56];
+// const ascendingScores = [...scores].sort();
+
+// console.log(scores); // [61, 19, 74, 35, 92, 56]
+// console.log(ascendingScores); // [19, 35, 56, 61, 74, 92]
+
+// Задание 38
+// Дополни код так, чтобы в переменной ascendingReleaseDates получилась отсортированная по возрастанию копия массива releaseDates, 
+// а в переменной alphabeticalAuthors копия массива имён авторов authors отсортированная в по алфавиту.
+
+// const releaseDates = [2016, 1967, 2008, 1984, 1973, 2012, 1997];
+// const authors = [
+//   "Tanith Lee",
+//   "Bernard Cornwell",
+//   "Robert Sheckley",
+//   "Fyodor Dostoevsky",
+// ];
+// // Change code below this line
+
+// const ascendingReleaseDates = [...releaseDates].sort();
+
+// const alphabeticalAuthors = [...authors].sort();
+
+//__________________________________________________________________________________________________________________________________
+// Свой порядок сортировки чисел
+// Для указания своего порядка сортировки методу sort(compareFunction) нужно передать коллбек-функцию с двумя параметрами. Это 
+// функция сравнения (compare function), порядок сортировки зависит от её результата. Метод sort() будет вызывать её для произвольных двух элементов.
+
+// массив.sort((a, b) => {
+//   // Callback function body
+// });
+// a - первый элемент для сравнения.
+// b - второй элемент для сравнения.
+// Если вызов compareFunction(a, b) возвращает любое отрицательное значение, то есть a меньше b, сортировка поставит a перед b. Это 
+// сортировка по возрастанию.
+
+// const scores = [61, 19, 74, 35, 92, 56];
+// const ascendingScores = [...scores].sort((a, b) => a - b);
+// console.log(ascendingScores); // [19, 35, 56, 61, 74, 92]
+// Если вызов compareFunction(a, b) возвращает любое положительное значение больше нуля, то есть b больше a, сортировка поставит b перед a. 
+// Это сортировка по убыванию.
+
+// const scores = [61, 19, 74, 35, 92, 56];
+// const descendingScores = [...scores].sort((a, b) => b - a);
+// console.log(descendingScores); // [92, 74, 61, 56, 35, 19]
+// Eсли вызов compareFunction(a, b) вернёт 0, сортировка оставит a и b неизменными по отношению друг к другу, но отсортирует их по отношению 
+// ко всем другим элементам. Но вообще не важно, что возвращать, если их взаимный порядок не имеет значения.
+
+// Задание 39
+// Онлайн бибилиотеке необходимо отображать книги сортированные по дате издания, по её возрастанию или убыванию. Дополни код так, чтобы в 
+// переменной ascendingReleaseDates получилась отсортированная по возрастанию копия массива releaseDates, а в переменной descendingReleaseDates 
+// копия отсортированная по убыванию.
+
+// const releaseDates = [2016, 1967, 2008, 1984, 1973, 2012, 1997];
+// // Change code below this line
+
+// const ascendingReleaseDates = [...releaseDates].sort((a, b) => a - b);
+
+// const descendingReleaseDates = [...releaseDates].sort((a, b) => b - a);
+//__________________________________________________________________________________________________________________________________
+// Свой порядок сортировки строк
+// Для сортировки строк в алфавитном порядке, по возрастанию или убыванию, используется метод строк localeCompare().
+
+// firstString.localeCompare(secondString)
+// Он вызывается на строке которую нужно сравнить (firstString) с той, что передана ему как аргумент (secondString).
+
+// "a".localeCompare("b"); // -1
+// "b".localeCompare("a"); // 1
+// "a".localeCompare("a"); // 0
+// "b".localeCompare("b"); // 0
+// Возвращает отрицательное значение если firstString должна быть перед secondString.
+// Возвращает положительное значение больше нуля если firstString должна быть после secondString.
+// Если строки одинаковы, возвращается ноль.
+// Это удобно использовать при сортировке строк, так как метод sort() ожидает такие же значения от коллбек-функции.
+
+// const students = ["Jacob", "Artemis", "Solomon", "Adrian", "Kai", "Ganymede"];
+
+// const inAlphabetOrder = [...students].sort((a, b) => a.localeCompare(b));
+// console.log(inAlphabetOrder); // [ "Adrian", "Artemis", "Ganymede", "Jacob", "Kai", "Solomon" ]
+
+// const inReversedOrder = [...students].sort((a, b) => b.localeCompare(a));
+// console.log(inReversedOrder); // [ "Solomon", "Kai", "Jacob", "Ganymede", "Artemis", "Adrian" ]
+
+// Задание 40
+// Онлайн бибилиотеке необходимо отображать книги отсортированные по автору, в алфавитном и обратном алфавитном порядке. Дополни код так, 
+// чтобы в переменной authorsInAlphabetOrder получилась отсортированная по алфавиту копия массива authors, а в переменной 
+// authorsInReversedOrder копия отсортированная в обратном алфавитном порядке.
+
+// const authors = [
+//     "Tanith Lee",
+//     "Bernard Cornwell",
+//     "Robert Sheckley",
+//     "Fyodor Dostoevsky",
+//     "Howard Lovecraft",
+//   ];
+//   // Change code below this line
+  
+//   const authorsInAlphabetOrder = [...authors].sort((a, b) => a.localeCompare(b));
+  
+//   const authorsInReversedOrder = [...authors].sort((a, b) => b.localeCompare(a));
+//__________________________________________________________________________________________________________________________________
+// Сортировка объектов
+// При работе с массивом объектов сортировка выполняется по числовому или строчному значению какого-то свойства. Например, есть 
+// группа студентов с баллами за тест. Необходимо отсортировать массив объектов по возрастанию и убыванию количества баллов, и по 
+// имени студента.
+
+// const students = [
+//   { name: "Mango", score: 83 },
+//   { name: "Poly", score: 59 },
+//   { name: "Ajax", score: 37 },
+//   { name: "Kiwi", score: 94 },
+// ];
+
+// const inAscendingScoreOrder = [...students].sort(
+//   (firstStudent, secondStudent) => firstStudent.score - secondStudent.score
+// );
+
+// const inDescendingScoreOrder = [...students].sort(
+//   (firstStudent, secondStudent) => secondStudent.score - firstStudent.score
+// );
+
+// const inAlphabeticalOrder = [...students].sort((firstStudent, secondStudent) =>
+//   firstStudent.name.localeCompare(secondStudent.name)
+// );
+
+// Задание 41
+// Дополни код так, чтобы:
+
+// В переменной sortedByAuthorName получился массив книг отсортированный по имени автора в алфавитном порядке.
+// В переменной sortedByReversedAuthorName получился массив книг отсортированный по имени автора в обратном алфавитном порядке.
+// В переменной sortedByAscendingRating получился массив книг отсортированный по возрастанию рейтинга.
+// В переменной sortedByDescentingRating получился массив книг отсортированный по убыванию рейтинга.
+
+// const books = [
+//     {
+//       title: "The Last Kingdom",
+//       author: "Bernard Cornwell",
+//       rating: 8.38,
+//     },
+//     {
+//       title: "Beside Still Waters",
+//       author: "Robert Sheckley",
+//       rating: 8.51,
+//     },
+//     {
+//       title: "The Dream of a Ridiculous Man",
+//       author: "Fyodor Dostoevsky",
+//       rating: 7.75,
+//     },
+//     { title: "Redder Than Blood", author: "Tanith Lee", rating: 7.94 },
+//     { title: "Enemy of God", author: "Bernard Cornwell", rating: 8.67 },
+//   ];
+//   // Change code below this line
+  
+//   const sortedByAuthorName = [...books].sort((a, b) => a.author.localeCompare(b.author));
+  
+//   const sortedByReversedAuthorName = [...books].sort((a, b) => b.author.localeCompare(a.author));
+  
+//   const sortedByAscendingRating = [...books].sort((a, b) => a.rating - b.rating);
+  
+//   const sortedByDescentingRating = [...books].sort((a, b) => b.rating - a.rating);
+//__________________________________________________________________________________________________________________________________
+// Задача. Сортировка по балансу
+// Этот массив объектов мы будем передавать в параметр users при вызове функции из задания.
+
+// Задание 42
+// Дополни функцию sortByAscendingBalance(users) так, чтобы она возвращала массив пользователей отсортированный по возрастанию их баланса 
+// (свойство balance).
+
+// const sortByAscendingBalance = users => {
+//     return users.sort((a, b) => a.balance - b.balance);
+//  };
+//__________________________________________________________________________________________________________________________________
+// Задача. Сортировка по количеству друзей
+// Этот массив объектов мы будем передавать в параметр users при вызове функции из задания.
+
+// Задание 43
+// Дополни функцию sortByDescendingFriendCount(users) так, чтобы она возвращала массив пользователей отсортированный по убыванию количества 
+// их друзей (свойство friends).
+
+// const sortByDescendingFriendCount = users => {
+//     return [...users].sort((a, b) => b.friends.length - a.friends.length);
+//  };
+//__________________________________________________________________________________________________________________________________
+// Задача. Сортировка по имени
+// Этот массив объектов мы будем передавать в параметр users при вызове функции из задания.
+
+// Задание 44
+// Дополни функцию sortByName(users) так, чтобы она возвращала массив пользователей отсортированный по их имени (свойство name) в 
+// алфавитном порядке.
+
+// const sortByName = users => {
+//     return [...users].sort((firstName, lastName) => firstName.name.localeCompare(lastName.name));
+//  };
+//__________________________________________________________________________________________________________________________________
+// Цепочки методов (чейнинг, chaining)
+// Есть массив объектов с именами, баллами и посещаемыми предметами каждого студента.
+
+// const students = [
+//   { name: "Mango", score: 83, courses: ["mathematics", "physics"] },
+//   { name: "Poly", score: 59, courses: ["science", "mathematics"] },
+//   { name: "Ajax", score: 37, courses: ["physics", "biology"] },
+//   { name: "Kiwi", score: 94, courses: ["literature", "science"] },
+// ];
+// Необходимо получить массив их имён отсортированный по возрастанию баллов за тест. Для этого мы отсортируем копию массива методом sort(), 
+// после чего методом map() составим массив значений свойства name из сортированного массива.
+
+// const sortedByAscendingScore = [...students].sort((a, b) => a.score - b.score);
+// const names = sortedByAscendingScore.map(student => student.name);
+
+// console.log(names); // ["Ajax", "Poly", "Mango", "Kiwi"]
+// Проблема в том, что у нас появляются промежуточные переменные после каждой операции кроме финальной. Переменная sortedByAscendingScore 
+// лишняя и необходима только для хранения промежуточного результата.
+
+// Избавиться от таких «мёртвых» переменных можно группируя вызовы методов в цепочки. Каждый следующий метод будет выполняться на результате 
+// работы предыдущего.
+
+// const names = [...students]
+//   .sort((a, b) => a.score - b.score)
+//   .map(student => student.name);
+
+// console.log(names); // ["Ajax", "Poly", "Mango", "Kiwi"]
+// Делаем копию исходного массива перед сортировкой.
+// На копии вызываем метод sort().
+// К результату работы метода sort() применяем метод map().
+// Переменной names присваивается результат работы метода map().
+// Получим сортированный по алфавиту массив уникальных посещаемых предметов.
+
+// const uniqueSortedCourses = students
+//   .flatMap(student => student.courses)
+//   .filter((course, index, array) => array.indexOf(course) === index)
+//   .sort((a, b) => a.localeCompare(b));
+
+// console.log(uniqueSortedCourses); // ["biology", "science", "literature", "mathematics", "physics"]
+// На исходном массиве вызываем flatMap() и делаем разглаженный массив всех курсов.
+// К результату метода flatMap() применяем метод filter() для фильтрации уникальных элементов.
+// На результате метода filter() вызываем sort().
+// Переменной uniqueSortedCourses присваивается результат работы метода sort().
+// Цепочка методов может быть произвольной длины, но обычно не более 2-3 операций. Во-первых, перебирающие методы используются для 
+// сравнительно простых операций над коллекцией. Во-вторых, вызов каждого последующего метода, это дополнительный перебор массива, 
+// что при достаточном количестве, может сказаться на производительности.
+
+// Задание 45
+// Дополни код так, чтобы в переменной names получился массив имён авторов в алфавитном порядке, рейтинг книг которых больше значения 
+// переменной MIN_BOOK_RATING.
+
+// const books = [
+//     {
+//       title: "The Last Kingdom",
+//       author: "Bernard Cornwell",
+//       rating: 8.38,
+//     },
+//     {
+//       title: "Beside Still Waters",
+//       author: "Robert Sheckley",
+//       rating: 8.51,
+//     },
+//     {
+//       title: "The Dream of a Ridiculous Man",
+//       author: "Fyodor Dostoevsky",
+//       rating: 7.75,
+//     },
+//     { title: "Redder Than Blood", author: "Tanith Lee", rating: 7.94 },
+//     {
+//       title: "The Dreams in the Witch House",
+//       author: "Howard Lovecraft",
+//       rating: 8.67,
+//     },
+//   ];
+//   const MIN_BOOK_RATING = 8;
+//   // Change code below this line
+  
+//   const names = [...books]
+//   .filter(book => book.rating > MIN_BOOK_RATING)
+//   .map(book => book.author)
+//   .sort((a, b) => a.localeCompare(b));
+
+//__________________________________________________________________________________________________________________________________
+// Задача. Пользователи и друзья
+// Этот массив объектов мы будем передавать в параметр users при вызове функции из задания.
+
+// Задание 46
+// Дополни функцию getNamesSortedByFriendCount(users) так, чтобы она возвращала массив имён пользователей отсортированный по возрастанию 
+// количества их друзей (свойство friends).
+
+// const getNamesSortedByFriendCount = users => {
+//     return [...users]
+//     .sort((a, b) => a.friends.length - b.friends.length)
+//     .map(user => user.name)
+//   };
+//__________________________________________________________________________________________________________________________________
+// Задача. Имена друзей
+// Этот массив объектов мы будем передавать в параметр users при вызове функции из задания.
+
+// Задание 47
+// Дополни функцию getSortedFriends(users) так, чтобы она возвращала массив уникальных имён друзей (свойство friends) отсортированный по алфавиту.
+
+// const getSortedFriends = users => {
+//     return users
+//     .flatMap(user => user.friends)
+//    .filter((user, index, array) => array.indexOf(user) === index)
+//     .sort((a, b) => a.localeCompare(b));
+//  };
+//__________________________________________________________________________________________________________________________________
+
+// Задача. Общий баланс
+// Этот массив объектов мы будем передавать в параметр users при вызове функции из задания.
+
+// Задание 48
+// Дополни функцию getTotalBalanceByGender(users, gender) так, чтобы она возвращала общий баланс пользователей (свойство balance), 
+// пол которых (свойство gender) совпадает со значением параметра gender.
+
+// const getTotalBalanceByGender = (users, gender) => {
+//     return users
+//    .filter(user => user.gender === gender)
+//    .reduce((acc, user) => acc + user.balance, 0,)
+//  };
