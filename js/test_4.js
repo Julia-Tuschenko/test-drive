@@ -1051,7 +1051,313 @@
 // Задание 26
 // Дополни функцию getActiveUsers(users) так, чтобы она возвращала массив активных пользователей, значение свойства isActive которых true.
 
+// const getActiveUsers = (users) => {
+//     return users.filter(user => user.isActive === true);
+//   };
 //__________________________________________________________________________________________________________________________________
+// Задача. Неактивные пользователи
+// Этот массив объектов мы будем передавать в параметр users при вызове функции из задания.
+
+// Задание 27
+// Дополни функцию getInactiveUsers(users) так, чтобы она возвращала массив неактивных пользователей, значение свойства isActive которых false.
+
+// const getInactiveUsers = (users) => {
+//     return users.filter(user => user.isActive !== true);
+//  };
+//__________________________________________________________________________________________________________________________________
+// Метод find()
+// Если метод filter(callack) используется для поиска всех элементов удовлетворяющим условию, то метод find(callback) 
+// позволяет найти и вернуть первый подходящий элемент, после чего перебор массива прекращается. То есть он ищет до первого совпадения.
+
+// массив.find((element, index, array) => {
+//   // Тело коллбек-функции
+// });
+// Не изменяет оригинальный массив.
+// Поэлементно перебирает оригинальный массив.
+// Возвращает первый элемент удовлетворяющий условию, то есть когда коллбек возвращает true.
+// Если ни один элемент не подошёл, то есть для всех элементов коллбек вернул false, метод возвращает undefined.
+// Метод find() используется для одной задачи - поиска элемента по уникальному значению свойства. Например, поиск 
+// пользователя по почте, автомобиля по серийному номеру, книги по названию и т. п.
+
+// const colorPickerOptions = [
+//   { label: "red", color: "#F44336" },
+//   { label: "green", color: "#4CAF50" },
+//   { label: "blue", color: "#2196F3" },
+//   { label: "pink", color: "#E91E63" },
+//   { label: "indigo", color: "#3F51B5" },
+// ];
+
+// colorPickerOptions.find((option) => option.label === "blue"); // { label: "blue", color: "#2196F3" }
+// colorPickerOptions.find((option) => option.label === "pink"); // { label: "pink", color: "#E91E63" }
+// colorPickerOptions.find((option) => option.label === "white"); // undefined
+
+// Задание 28
+// Используя метод find() дополни код так, чтобы:
+
+// В переменной bookWithTitle получился объект книги название которой (свойство title) совпадает со значением переменной BOOK_TITLE.
+// В переменной bookByAuthor получился объект книги автор который (свойство author) совпадает со значением переменной AUTHOR.
+
+// const books = [
+//     {
+//       title: 'The Last Kingdom',
+//       author: 'Bernard Cornwell',
+//       rating: 8.38,
+//     },
+//     {
+//       title: 'Beside Still Waters',
+//       author: 'Robert Sheckley',
+//       rating: 8.51,
+//     },
+//     {
+//       title: 'The Dream of a Ridiculous Man',
+//       author: 'Fyodor Dostoevsky',
+//       rating: 7.75,
+//     },
+//     { title: 'Redder Than Blood', author: 'Tanith Lee', rating: 7.94 },
+//   ];
+//   const BOOK_TITLE = 'The Dream of a Ridiculous Man';
+//   const AUTHOR = 'Robert Sheckley';
+//   // Change code below this line
+  
+//   const bookWithTitle = books.find((book) => book.title === BOOK_TITLE);
+//   const bookByAuthor = books.find((book) => book.author === AUTHOR);
+//__________________________________________________________________________________________________________________________________
+// Задача. Пользователь с почтой
+// Этот массив объектов мы будем передавать в параметр users при вызове функции из задания.
+
+// Задание 29
+// Дополни функцию getUserWithEmail(users, email) так, чтобы она возвращала объект пользователя, почта которого (свойство email)
+//  совпадает со значением параметра email.
+
+// const getUserWithEmail = (users, email) => {
+//     return users.find(user => user.email === email);
+//  };
+//__________________________________________________________________________________________________________________________________
+// Метод every()
+// Метод every(callback) проверяет проходят ли все элементы массива тест предоставляемый коллбек-функцией. Возвращает true или false.
+
+// массив.every((element, index, array) => {
+//   // Тело коллбек-функции
+// });
+// Не изменяет оригинальный массив.
+// Поэлементно перебирает оригинальный массив.
+// Возвращает true если все элементы массива удовлетворяют условию.
+// Возвращает false если хотя бы один элемент массива не удовлетворяет условию.
+// Перебор массива прекращается если коллбек возвращает false.
+// // Все элементы больше либо равны нулю? - да
+// [1, 2, 3, 4, 5].every((value) => value >= 0); // true
+
+// // Все элементы больше либо равны нулю? - нет
+// [1, 2, 3, -10, 4, 5].every((value) => value >= 0); // false
+// При работе с массивом объектов проверяется значение какого-то их свойства.
+
+// Задание 30
+// Используя метод every() дополни код так, чтобы:
+
+// В переменной eachElementInFirstIsEven был результат проверки всех элементов массива firstArray на чётность.
+// В переменной eachElementInFirstIsOdd был результат проверки всех элементов массива firstArray на нечётность.
+// В переменной eachElementInSecondIsEven был результат проверки всех элементов массива secondArray на чётность.
+// В переменной eachElementInSecondIsOdd был результат проверки всех элементов массива secondArray на нечётность.
+// В переменной eachElementInThirdIsEven был результат проверки всех элементов массива thirdArray на чётность.
+// В переменной eachElementInThirdIsOdd был результат проверки всех элементов массива thirdArray на нечётность.
+
+// const firstArray = [26, 94, 36, 18];
+// const secondArray = [17, 61, 23];
+// const thirdArray = [17, 26, 94, 61, 36, 23, 18];
+// // Change code below this line
+
+// const eachElementInFirstIsEven = firstArray.every((value) => value % 2 === 0);
+// const eachElementInFirstIsOdd = firstArray.every((value) => value % 2 !== 0);
+
+// const eachElementInSecondIsEven = secondArray.every((value) => value % 2 === 0);
+// const eachElementInSecondIsOdd = secondArray.every((value) => value % 2 !== 0);
+
+// const eachElementInThirdIsEven = thirdArray.every((value) => value % 2 === 0);
+// const eachElementInThirdIsOdd = thirdArray.every((value) => value % 2 !== 0);
+
+//__________________________________________________________________________________________________________________________________
+// Задача. Все ли пользователи активны
+// Этот массив объектов мы будем передавать в параметр users при вызове функции из задания.
+
+// [
+//   {
+//     name: "Moore Hensley",
+//     email: "moorehensley@indexia.com",
+//     eyeColor: "blue",
+//     friends: ["Sharron Pace"],
+//     isActive: false,
+//     balance: 2811,
+//     gender: "male"
+//   },
+//   {
+//     name: "Sharlene Bush",
+//     email: "sharlenebush@tubesys.com",
+//     eyeColor: "blue",
+//     friends: ["Briana Decker", "Sharron Pace"],
+//     isActive: true,
+//     balance: 3821,
+//     gender: "female"
+//   },
+//   {
+//     name: "Ross Vazquez",
+//     email: "rossvazquez@xinware.com",
+//     eyeColor: "green",
+//     friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+//     isActive: false,
+//     balance: 3793,
+//     gender: "male"
+//   },
+//   {
+//     name: "Elma Head",
+//     email: "elmahead@omatom.com",
+//     eyeColor: "green",
+//     friends: ["Goldie Gentry", "Aisha Tran"],
+//     isActive: true,
+//     balance: 2278,
+//     gender: "female"
+//   },
+//   {
+//     name: "Carey Barr",
+//     email: "careybarr@nurali.com",
+//     eyeColor: "blue",
+//     friends: ["Jordan Sampson", "Eddie Strong"],
+//     isActive: true,
+//     balance: 3951,
+//     gender: "male"
+//   },
+//   {
+//     name: "Blackburn Dotson",
+//     email: "blackburndotson@furnigeer.com",
+//     eyeColor: "brown",
+//     friends: ["Jacklyn Lucas", "Linda Chapman"],
+//     isActive: false,
+//     balance: 1498,
+//     gender: "male"
+//   },
+//   {
+//     name: "Sheree Anthony",
+//     email: "shereeanthony@kog.com",
+//     eyeColor: "brown",
+//     friends: ["Goldie Gentry", "Briana Decker"],
+//     isActive: true,
+//     balance: 2764,
+//     gender: "female"
+//   }
+// ]
+// Задание 31
+// Дополни функцию isEveryUserActive(users) так, чтобы она проверяла все ли пользователи сейчас активны (свойство isActive) и 
+// возвращала true или false.
+
+// const isEveryUserActive = (users) => {
+//     return users.every(user => user.isActive === true);
+//  };
+//__________________________________________________________________________________________________________________________________
+// Метод some()
+// Метод some(callback) проверяет проходит ли хотя бы один элемент массива тест предоставляемый коллбек-функцией. 
+// Возвращает true или false.
+
+// массив.some((element, index, array) => {
+//   // Callback function body
+// });
+// Не изменяет оригинальный массив.
+// Поэлементно перебирает оригинальный массив.
+// Возвращает true если хотя бы один элемент массива удовлетворяет условию.
+// Возвращает false если ни один элемент массив не удовлетворяет условию.
+// Перебор массива прекращается если коллбек возвращает true.
+// // Есть хотя бы один элемент больше либо равный нулю? - да
+// [1, 2, 3, 4, 5].some(value => value >= 0); // true
+
+// // Есть хотя бы один элемент больше либо равный нулю? - да
+// [-7, -20, 3, -10, -14].some(value => value >= 0); // true
+
+// // Есть хотя бы один элемент меньше нуля? - нет
+// [1, 2, 3, 4, 5].some(value => value < 0); // false
+
+// // Есть хотя бы один элемент меньше нуля? - да
+// [1, 2, 3, -10, 4, 5].some(value => value < 0); // true
+
+// Задание 32
+// Используя метод some() дополни код так, чтобы:
+
+// В переменной anyElementInFirstIsEven был результат проверки наличия чётных элементов в массиве firstArray.
+// В переменной anyElementInFirstIsOdd был результат проверки наличия нечётных элементов в массиве firstArray.
+// В переменной anyElementInSecondIsEven был результат проверки наличия чётных элементов в массиве secondArray.
+// В переменной anyElementInSecondIsOdd был результат проверки наличия нечётных элементов в массиве secondArray.
+// В переменной anyElementInThirdIsEven был результат проверки наличия чётных элементов в массиве thirdArray.
+// В переменной anyElementInThirdIsOdd был результат проверки наличия нечётных элементов в массиве thirdArray.
+
+// const firstArray = [26, 94, 36, 18];
+// const secondArray = [17, 61, 23];
+// const thirdArray = [17, 26, 94, 61, 36, 23, 18];
+// // Change below this line
+
+// const anyElementInFirstIsEven = firstArray.some((value) => value % 2 === 0);
+// const anyElementInFirstIsOdd = firstArray.some((value) => value % 2 !== 0);
+
+// const anyElementInSecondIsEven = secondArray.some((value) => value % 2 === 0);
+// const anyElementInSecondIsOdd = secondArray.some((value) => value % 2 !== 0);
+
+// const anyElementInThirdIsEven = thirdArray.some((value) => value % 2 === 0);
+// const anyElementInThirdIsOdd = thirdArray.some((value) => value % 2 !== 0);
+//__________________________________________________________________________________________________________________________________
+// Задача. Есть ли активные пользователи
+// Этот массив объектов мы будем передавать в параметр users при вызове функции из задания.
+
+// Задание 33
+// Дополни функцию isAnyUserActive(users) так, чтобы она проверяла наличие активных пользователей (свойство isActive) и возвращала 
+// true или false.
+
+// const isAnyUserActive = users => {
+//     return users.some(user => user.isActive === true);
+//  };
+//__________________________________________________________________________________________________________________________________
+// Метод reduce()
+// Метод reduce(callback, initialValue) используется для последовательной обработки каждого элемента массива с сохранением 
+// промежуточного результата, как аккумулятор. Немного сложнее других в усвоении, но результат стоит того.
+
+// массив.reduce((previousValue, element, index, array) => {
+//   // Тело коллбек-функции
+// }, initialValue);
+// Не изменяет оригинальный массив.
+// Поэлементно перебирает оригинальный массив.
+// Возвращает что угодно.
+// Делает что угодно.
+// Легче всего представить его работу на примере подсчёта суммы элементов массива.
+
+// const total = [2, 7, 3, 14, 6].reduce((previousValue, number) => {
+//   return previousValue + number;
+// }, 0);
+
+// console.log(total); // 32
+// Первый параметр коллбек-функции (previousValue) это аккумулятор, то есть промежуточный результат. Значение которое вернёт 
+// коллбек-функция на текущей итерации, будет значением этого параметра на следующей.
+
+// Вторым аргументом для reduce() можно передать необязательное начальное значение аккумулятора - параметр initialValue.
+
+// # Вначале метод reduce() создаёт внутреннюю переменную-аккумулятор и
+// # присваивает ей значение параметра initialValue или первого элемента
+// # перебираемого массива, если initialValue не задан.
+// previousValue = 0
+
+// # Далее коллбек-функция вызывается для каждого элемента массива. Текущее значение
+// # параметра previousValue это то, что вернула коллбек-функция на прошлой итерации.
+// Итерация 1 -> previousValue = 0 -> number = 2 -> return 0 + 2 -> return 2
+// Итерация 2 -> previousValue = 2 -> number = 7 -> return 2 + 7 -> return 9
+// Итерация 3 -> previousValue = 9 -> number = 3 -> return 9 + 3 -> return 12
+// Итерация 4 -> previousValue = 12 -> number = 14 -> return 12 + 14 -> return 26
+// Итерация 5 -> previousValue = 26 -> number = 6 -> return 26 + 6 -> return 32
+
+// # После того как весь массив перебран, метод reduce() возвращает значение аккумулятора.
+// Результат - 32
+// То есть метод reduce() используется когда необходимо взять «много» и привести к «одному». В повседневных задачах его 
+// применение сводится к работе с числами.
+
+// Задание 34
+// Игровому сервису необходим функционал подсчёта среднего времени проведённого в играх. Дополни код так, чтобы в переменной 
+// totalPlayTime получилось общее игровое время из массива playtimes.
+
+
+
 //__________________________________________________________________________________________________________________________________
 //__________________________________________________________________________________________________________________________________
 //__________________________________________________________________________________________________________________________________
